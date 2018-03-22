@@ -22,11 +22,14 @@
     <text name="LoginFailed" value="Falha no login!" />
 
     <text name="NameSurname" value="Nome sobrenome" />
+    <text name="Refresh" value="Refresh" />
     <text name="UserName" value="Nome de usuário" />
     <text name="Name" value="Nome" />
     <text name="Description" value="Descrição" />
     <text name="Manufacturers" value="Fabricantes" />
+    <text name="Manufacturer" value="Fabricante" />
     <text name="Products" value="Produtos" />
+    <text name="Consumable" value="Consumível" />
     <text name="Surname" value="Sobrenome" />
     <text name="EmailAddress" value="Endereço de e-mail" />
 

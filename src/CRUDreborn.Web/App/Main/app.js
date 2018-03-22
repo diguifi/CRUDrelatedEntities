@@ -68,7 +68,7 @@
                 })
                 .state('products', {
                     url: '/products',
-                    templateUrl: '/App/Main/views/about/about.cshtml',
+                    templateUrl: '/App/Main/views/products/index.cshtml',
                     menu: 'Products'
                 });
         }

@@ -3,27 +3,28 @@
 
     angular
         .module('app')
-        .controller('app.views.manufacturers.index', 
-        ['$scope', '$timeout', '$uibModal', 'abp.services.app.fabricante',
+        .controller('app.views.products.index', 
+        ['$scope', '$timeout', '$uibModal', 'abp.services.app.produto',
 
-        function ManufacturerController($scope, $timeout, $uibModal, fabricanteService) {
+        function ProductsController($scope, $timeout, $uibModal, produtoService) {
             var vm = this;
-            vm.openFabricanteCreationModal = openFabricanteCreationModal;
-            vm.openFabricanteEditModal = openFabricanteEditModal;
+            vm.openProdutoCreationModal = openProdutoCreationModal;
+            vm.openProdutoEditModal = openProdutoEditModal;
             vm.delete = Delete;
             vm.refresh = refresh;
 
-            vm.fabricantes = [];
+            vm.produtos = [];
 
-            getFabricantes();
+            getProdutos();
 
-            function getFabricantes() {
-                fabricanteService.getAllFabricantes({}).then(function (result) {
-                    vm.fabricantes = result.data.fabricantes;
+            function getProdutos() {
+                console.log(produtoService.getAllProdutos());
+                produtoService.getAllProdutos({}).then(function (result) {
+                    vm.produtos = result.data.produtos;
                 });
             }
 
-            function openFabricanteCreationModal() {
+            function openProdutoCreationModal() {
                 var modalInstance = $uibModal.open({
                     templateUrl: '/App/Main/views/manufacturers/createModal.cshtml',
                     controller: 'app.views.manufacturers.createModal as vm',
@@ -39,7 +40,7 @@
                 });
             };
 
-            function openFabricanteEditModal(fabricante) {
+            function openProdutoEditModal(fabricante) {
                 var modalInstance = $uibModal.open({
                     templateUrl: '/App/Main/views/manufacturers/editModal.cshtml',
                     controller: 'app.views.manufacturers.editModal as vm',
@@ -77,7 +78,7 @@
             }
 
             function refresh() {
-                getFabricantes();
+                getProdutos();
             };
 
         }

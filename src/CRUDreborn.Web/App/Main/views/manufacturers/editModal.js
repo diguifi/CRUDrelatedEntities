@@ -1,8 +1,10 @@
 ﻿(function () {
+    'use strict';
+
     angular
         .module('app')
-        .controller('app.views.manufacturers.editModal', [
-        '$scope', '$uibModalInstance', 'abp.services.app.fabricante', 'id',
+        .controller('app.views.manufacturers.editModal',
+        ['$scope', '$uibModalInstance', 'abp.services.app.fabricante', 'id',
 
         function ($scope, $uibModalInstance, fabricanteService, id) {
             var vm = this;
