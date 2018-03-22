@@ -18,8 +18,8 @@
             getProdutos();
 
             function getProdutos() {
-                console.log(produtoService.getAllProdutos());
                 produtoService.getAllProdutos({}).then(function (result) {
+                    console.log(result.data.produtos);
                     vm.produtos = result.data.produtos;
                 });
             }

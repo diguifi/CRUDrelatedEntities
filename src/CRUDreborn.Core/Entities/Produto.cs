@@ -14,6 +14,11 @@ namespace CRUDreborn.Entities
         public Fabricante AssignedManufacturer { get; set; }
         public bool Consumable { get; set; }
 
+        public Produto()
+        {
+            CreationTime = DateTime.Now;
+        }
+
         public Produto(string name, string description, Fabricante assignedManufacturer, bool consumable)
         {
             this.Name = name;
