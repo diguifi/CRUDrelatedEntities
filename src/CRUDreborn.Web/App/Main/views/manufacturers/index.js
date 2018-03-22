@@ -10,7 +10,7 @@
             var vm = this;
             vm.openFabricanteCreationModal = openFabricanteCreationModal;
             vm.openFabricanteEditModal = openFabricanteEditModal;
-            vm.Delete = Delete;
+            vm.delete = Delete;
             vm.refresh = refresh;
 
             vm.fabricantes = [];
@@ -42,12 +42,12 @@
 
             function openFabricanteEditModal(fabricante) {
                 var modalInstance = $uibModal.open({
-                    templateUrl: '/App/Main/views/users/editModal.cshtml',
-                    controller: 'app.views.users.editModal as vm',
+                    templateUrl: '/App/Main/views/manufacturers/editModal.cshtml',
+                    controller: 'app.views.manufacturers.editModal as vm',
                     backdrop: 'static',
                     resolve: {
                         id: function () {
-                            return user.id;
+                            return fabricante.id;
                         }
                     }
                 });
@@ -65,12 +65,12 @@
 
             function Delete(fabricante) {
                 abp.message.confirm(
-                    "Delete manufacturer '" + fabricante.Name + "'?",
+                    "Delete manufacturer '" + fabricante.name + "'?",
                     function (result) {
                         if (result) {
-                            fabricanteService.delete({ id: fabricante.id })
+                            fabricanteService.deleteFabricante(fabricante.id)
                                 .then(function () {
-                                    abp.notify.info("Deleted user: " + fabricante.Name);
+                                    abp.notify.info("Deleted user: " + fabricante.name);
                                     getFabricantes();
                                 });
                         }

@@ -467,6 +467,7 @@
     <Content Include="App\Main\views\layout\sidebar-user-area.js" />
     <Content Include="App\Main\views\layout\topbar.js" />
     <Content Include="App\Main\views\manufacturers\createModal.js" />
+    <Content Include="App\Main\views\manufacturers\editModal.js" />
     <Content Include="App\Main\views\manufacturers\index.js" />
     <Content Include="App\Main\views\roles\editModal.js" />
     <Content Include="App\Main\views\roles\createModal.js" />
@@ -2808,6 +2809,7 @@
     <Content Include="Abp\Framework\styles\abp.css.map" />
     <Content Include="App\Main\views\manufacturers\index.cshtml" />
     <Content Include="App\Main\views\manufacturers\createModal.cshtml" />
+    <Content Include="App\Main\views\manufacturers\editModal.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
