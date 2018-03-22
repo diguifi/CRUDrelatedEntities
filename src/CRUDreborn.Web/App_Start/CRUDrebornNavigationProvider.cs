@@ -55,6 +55,22 @@ namespace CRUDreborn.Web
                         url: "#/about",
                         icon: "fa fa-info"
                         )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        "Manufacturers",
+                        new LocalizableString("Manufacturers", CRUDrebornConsts.LocalizationSourceName),
+                        url: "#/manufacturers",
+                        icon: "fa fa-building"
+                        )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        "Products",
+                        new LocalizableString("Products", CRUDrebornConsts.LocalizationSourceName),
+                        url: "#/products",
+                        icon: "fa fa-cart-arrow-down"
+                        )
                 );
         }
 

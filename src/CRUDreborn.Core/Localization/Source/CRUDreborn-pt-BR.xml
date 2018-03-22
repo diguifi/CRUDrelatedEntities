@@ -24,12 +24,16 @@
     <text name="NameSurname" value="Nome sobrenome" />
     <text name="UserName" value="Nome de usuário" />
     <text name="Name" value="Nome" />
+    <text name="Description" value="Descrição" />
+    <text name="Manufacturers" value="Fabricantes" />
+    <text name="Products" value="Produtos" />
     <text name="Surname" value="Sobrenome" />
     <text name="EmailAddress" value="Endereço de e-mail" />
 
     <text name="Tenants" value="Tenants" />
     <text name="SavedSuccessfully" value="Salvo com sucesso" />
     <text name="CreateNewTenant" value="Crie um novo tenant" />
+    <text name="CreateNewManufacturer" value="Crie um novo fabricante" />
     <text name="AdminEmailAddress" value="Endereço de e-mail administrador" />
     <text name="Save" value="Salvar" />
     <text name="Cancel" value="Cancelar" />

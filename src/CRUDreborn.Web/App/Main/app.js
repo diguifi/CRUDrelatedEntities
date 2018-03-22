@@ -60,6 +60,16 @@
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',
                     menu: 'About' //Matches to name of 'About' menu in CRUDrebornNavigationProvider
+                })
+                .state('manufacturers', {
+                    url: '/manufacturers',
+                    templateUrl: '/App/Main/views/manufacturers/index.cshtml',
+                    menu: 'Manufacturers'
+                })
+                .state('products', {
+                    url: '/products',
+                    templateUrl: '/App/Main/views/about/about.cshtml',
+                    menu: 'Products'
                 });
         }
     ]);

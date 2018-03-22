@@ -228,6 +228,7 @@
     <Compile Include="Produto\Dtos\UpdateProdutoInput.cs" />
     <Compile Include="Produto\Dtos\UpdateProdutoOutput.cs" />
     <Compile Include="Produto\IProdutoAppService.cs" />
+    <Compile Include="Produto\ProdutoAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\Dto\CreateRoleDto.cs" />
     <Compile Include="Roles\Dto\PermissionDto.cs" />

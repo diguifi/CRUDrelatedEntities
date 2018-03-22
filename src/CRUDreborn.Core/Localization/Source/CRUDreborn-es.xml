@@ -24,6 +24,9 @@
     <text name="NameSurname" value="Nombre Apellido" />
     <text name="UserName" value="Nombre de usuario" />
     <text name="Name" value="Nombre" />
+    <text name="Description" value="Descricion" />
+    <text name="Manufacturers" value="Fabricantes" />
+    <text name="Products" value="Productos" />
     <text name="Surname" value="Apellido" />
     <text name="EmailAddress" value="Dirección de correo electrónico" />
 

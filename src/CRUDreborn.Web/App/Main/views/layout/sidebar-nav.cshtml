@@ -5,7 +5,7 @@
             <a ui-sref="{{menuItem.route}}" ng-if="!menuItem.items && menuItem.route.indexOf('http') != 0">
                 <i ng-if="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
                 <span>{{menuItem.name}}</span>
-            </a>
+            
             <!-- Static link (starts with 'http') -->
             <a href="{{menuItem.route}}" target="_blank" ng-if="!menuItem.items  && menuItem.route.indexOf('http') == 0">
                 <i ng-if="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
