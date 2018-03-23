@@ -1,0 +1,69 @@
+﻿<form id="frm_create_product" name="produtoCreateForm" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">
+            <span>@L("EditProduct")</span>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="row clearfix">
+            <div class="col-sm-12">
+                <div class="form-group form-float">
+                    <label for="productname" class="form-label">@L("Name")</label>
+                    <div class="form-line">
+                        <input id="productname" type="text" name="ProductName" ng-model="vm.produto.name" required maxlength="32" minlength="2" class="validate form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-sm-12">
+                <div class="form-group form-float">
+                    <label for="description" class="form-label">@L("Description")</label>
+                    <div class="form-line">
+                        <input id="description" type="text" name="Description" ng-model="vm.produto.description" required maxlength="32" minlength="2" class="validate form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <label for="description" class="form-label">@L("Manufacturer"): </label>
+        <label for="description" class="form-label">{{vm.fabricante.name}}</label>
+
+
+
+        <div class="form-group">
+            <div ng-repeat="fabricante in vm.fabricantes">
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="dropdown-menu pull-left">
+                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.getFabricante(fabricante)"><i class="material-icons">create</i>{{fabricante.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <br />
+        <div class="row clearfix">
+            <div class="col-sm-12">
+                <div class="form-group form-float">
+                    <div class="">
+                        <input id="isconsumable" type="checkbox" name="IsConsumable" ng-model="vm.produto.consumable" checked class="form-control" />
+                        <label for="isconsumable" class="form-label">@L("Consumable")</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect" ng-click="vm.cancel()">
+            @L("Cancel")
+        </button>
+        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()" ng-disabled="produtoCreateForm.$invalid">
+            @L("Save")
+        </button>
+    </div>
+</form>

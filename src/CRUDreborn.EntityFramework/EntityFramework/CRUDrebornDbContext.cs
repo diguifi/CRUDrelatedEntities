@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.Zero.EntityFramework;
 using CRUDreborn.Authorization.Roles;
 using CRUDreborn.Authorization.Users;
@@ -19,6 +20,7 @@ namespace CRUDreborn.EntityFramework
          *   But it may cause problems when working Migrate.exe of EF. If you will apply migrations on command line, do not
          *   pass connection string name to base classes. ABP works either way.
          */
+
         public CRUDrebornDbContext()
             : base("Default")
         {

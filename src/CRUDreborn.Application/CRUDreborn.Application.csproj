@@ -224,6 +224,7 @@
     <Compile Include="Produto\Dtos\CreateProdutoOutput.cs" />
     <Compile Include="Produto\Dtos\GetAllProdutosItem.cs" />
     <Compile Include="Produto\Dtos\GetAllProdutosOutput.cs" />
+    <Compile Include="Produto\Dtos\GetFabricanteByIdOutput.cs" />
     <Compile Include="Produto\Dtos\GetProdutoByIdOutput.cs" />
     <Compile Include="Produto\Dtos\UpdateProdutoInput.cs" />
     <Compile Include="Produto\Dtos\UpdateProdutoOutput.cs" />

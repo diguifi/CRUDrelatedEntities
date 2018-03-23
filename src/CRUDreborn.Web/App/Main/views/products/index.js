@@ -1,10 +1,12 @@
-﻿(function () {
+﻿//NOT GETTING MANUFACTURER
+
+(function () {
     'use strict';
 
     angular
-        .module('app')
-        .controller('app.views.products.index', 
-        ['$scope', '$timeout', '$uibModal', 'abp.services.app.produto',
+    .module('app')
+    .controller('app.views.products.index', 
+    ['$scope', '$timeout', '$uibModal', 'abp.services.app.produto',
 
         function ProductsController($scope, $timeout, $uibModal, produtoService) {
             var vm = this;
@@ -16,18 +18,18 @@
             vm.produtos = [];
 
             getProdutos();
+            
 
             function getProdutos() {
                 produtoService.getAllProdutos({}).then(function (result) {
-                    console.log(result.data.produtos);
                     vm.produtos = result.data.produtos;
                 });
             }
 
             function openProdutoCreationModal() {
                 var modalInstance = $uibModal.open({
-                    templateUrl: '/App/Main/views/manufacturers/createModal.cshtml',
-                    controller: 'app.views.manufacturers.createModal as vm',
+                    templateUrl: '/App/Main/views/products/createModal.cshtml',
+                    controller: 'app.views.products.createModal as vm',
                     backdrop: 'static'
                 });
 
@@ -36,7 +38,7 @@
                 });
 
                 modalInstance.result.then(function () {
-                    getFabricantes();
+                    getProdutos();
                 });
             };
 
@@ -63,15 +65,15 @@
                 });
             };
 
-            function Delete(fabricante) {
+            function Delete(produto) {
                 abp.message.confirm(
-                    "Delete manufacturer '" + fabricante.name + "'?",
+                    "Delete produto '" + produto.name + "'?",
                     function (result) {
                         if (result) {
-                            fabricanteService.deleteFabricante(fabricante.id)
+                            produtoService.deleteProduto(produto.id)
                                 .then(function () {
-                                    abp.notify.info("Deleted user: " + fabricante.name);
-                                    getFabricantes();
+                                    abp.notify.info("Deleted produto: " + produto.name);
+                                    getProdutos();
                                 });
                         }
                     });

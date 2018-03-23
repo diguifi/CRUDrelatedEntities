@@ -35,17 +35,17 @@
                         <tr ng-repeat="product in vm.produtos">
                             <td>{{product.name}}</td>
                             <td>{{product.description}}</td>
-                            <td>{{product.assignedManufacturer}}</td>
+                            <td>{{product.assignedManufacturer.Id}}</td>
                             <td align="center">
                                 <i class="material-icons" ng-if="product.consumable" style="color:green;">check_box</i>
-                                <i class="material-icons" ng-if="!product.consumable" style="color:red;">indeterminate_check_box</i>
+                                <i class="material-icons" ng-if="!product.consumable" style="color:gray;">indeterminate_check_box</i>
                             </td>
                             <td class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">menu</i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.openProductEditModal(product)"><i class="material-icons">create</i>@L("Edit")</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.openProdutoEditModal(product)"><i class="material-icons">create</i>@L("Edit")</a></li>
                                     <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.delete(product)"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
                                 </ul>
                             </td>
@@ -53,7 +53,7 @@
                     </tbody>
                 </table>
                 <!-- ******************************************************** -->
-                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" ng-click="vm.openFabricanteCreationModal()">
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" ng-click="vm.openProdutoCreationModal()">
                     <i class="material-icons">add</i>
                 </button>
             </div>

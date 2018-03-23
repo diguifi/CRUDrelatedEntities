@@ -18,6 +18,8 @@
     <text name="Password" value="Senha" />
     <text name="RememberMe" value="Lembre de mim" />
     <text name="LogIn" value="Entrar" />
+    <text name="CreateNewProduct" value="Criar movo produto" />
+    <text name="EditProduct" value="Editar produto" />
 
     <text name="LoginFailed" value="Falha no login!" />
 
