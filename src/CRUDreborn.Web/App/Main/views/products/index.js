@@ -6,9 +6,9 @@
     angular
     .module('app')
     .controller('app.views.products.index', 
-    ['$scope', '$timeout', '$uibModal', 'abp.services.app.produto',
+    ['$scope', '$timeout', '$uibModal', 'abp.services.app.produto', 'abp.services.app.fabricante',
 
-        function ProductsController($scope, $timeout, $uibModal, produtoService) {
+        function ProductsController($scope, $timeout, $uibModal, produtoService, fabricanteService) {
             var vm = this;
             vm.openProdutoCreationModal = openProdutoCreationModal;
             vm.openProdutoEditModal = openProdutoEditModal;
@@ -16,14 +16,28 @@
             vm.refresh = refresh;
 
             vm.produtos = [];
+            vm.produto = {
+                name: '',
+                description: '',
+                assignedManufacturer: '',
+            }
 
+            getFabricantes();
             getProdutos();
             
 
             function getProdutos() {
                 produtoService.getAllProdutos({}).then(function (result) {
                     vm.produtos = result.data.produtos;
+                    console.log(vm.produtos);
                 });
+            }
+
+            function getFabricantes() {
+                fabricanteService.getAllFabricantes({})
+                    .then(function (result) {
+                        vm.fabricantes = result.data;                        
+                    });
             }
 
             function openProdutoCreationModal() {

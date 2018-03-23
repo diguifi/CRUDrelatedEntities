@@ -1,4 +1,5 @@
-﻿using Abp.AutoMapper;
+﻿using Abp.Application.Services;
+using Abp.AutoMapper;
 using CRUDreborn.Entities;
 using CRUDreborn.Produto.Dtos;
 using System;
@@ -9,15 +10,13 @@ using System.Threading.Tasks;
 
 namespace CRUDreborn.Produto
 {
-    public class ProdutoAppService : IProdutoAppService
+    public class ProdutoAppService : ApplicationService, IProdutoAppService
     {
         private IProdutoManager _produtoManager;
-        private IFabricanteManager _fabricanteManager;
 
-        public ProdutoAppService(IProdutoManager produtoManager, IFabricanteManager fabricanteManager)
+        public ProdutoAppService(IProdutoManager produtoManager)
         {
             _produtoManager = produtoManager;
-            _fabricanteManager = fabricanteManager;
         }
 
         public async Task<CreateProdutoOutput> CreateProduto(CreateProdutoInput input)
@@ -28,12 +27,6 @@ namespace CRUDreborn.Produto
             {
                 Id = createdProdutoId
             };
-        }
-
-        public async Task<GetFabricanteByIdOutput> GetFabricanteById(long id)
-        {
-            var fabricante = await _fabricanteManager.GetById(id);
-            return fabricante.MapTo<GetFabricanteByIdOutput>();
         }
 
         public async Task DeleteProduto(long id)

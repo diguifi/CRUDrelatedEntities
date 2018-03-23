@@ -26,6 +26,7 @@
 
             function getFabricante(fabricante) {
                 vm.fabricante = fabricante;
+                vm.produto.assignedManufacturer_Id = vm.fabricante.id
             }
 
             function save() {
