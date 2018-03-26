@@ -20,8 +20,6 @@ namespace CRUDreborn.Entities
         public void Create(Produto produto)
         {
             _produtoRepository.InsertAndAttach(produto);
-            //_produtoRepository.InsertAndGetIdAsync(produto);
-            //return await _produtoRepository.InsertAndGetIdAsync(produto);
         }
 
         public async Task<Produto> Update(Produto produto)

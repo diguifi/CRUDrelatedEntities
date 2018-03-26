@@ -22,10 +22,11 @@ namespace CRUDreborn.Entities
             CreationTime = DateTime.Now;
         }
 
-        public Produto(string name, string description, Fabricante assignedManufacturer, bool consumable)
+        public Produto(string name, string description, long assignedManufacturer_Id, Fabricante assignedManufacturer, bool consumable)
         {
             this.Name = name;
             this.Description = description;
+            this.AssignedManufacturer_Id = assignedManufacturer_Id;
             this.AssignedManufacturer = assignedManufacturer;
             this.Consumable = consumable;
             CreationTime = DateTime.Now;

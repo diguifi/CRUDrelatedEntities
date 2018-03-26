@@ -9,6 +9,7 @@
         function ($scope, $uibModalInstance, produtoService, fabricanteService, id) {
             var vm = this;
             vm.save = save;
+            vm.setFabricante = setFabricante;
             
 
             vm.produto = [];
@@ -25,21 +26,24 @@
                 });
             }
 
+            function setFabricante(fabricante) {
+                vm.fabricante = fabricante;
+            }
+
             function activate() {
                 produtoService.getById(id)
                     .then(function (result) {
                         vm.produto = result.data;
-                        console.log(vm.produto)
-
-                        produtoService.get(id)
+                        fabricanteService.getById(vm.produto.assignedManufacturer_Id)
                             .then(function (result) {
-                                vm.produto = result.data;
-                                console.log(vm.produto)
+                                vm.produto.assignedManufacturer = result.data;
+                                setFabricante(vm.produto.assignedManufacturer);
                             });
                     });
             }
 
             function save() {
+                vm.produto.assignedManufacturer_Id = vm.fabricante.id
                 produtoService.updateProduto(vm.produto)
                     .then(function () {
                         abp.notify.info(App.localize('SavedSuccessfully'));

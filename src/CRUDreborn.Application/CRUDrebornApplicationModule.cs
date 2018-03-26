@@ -28,10 +28,10 @@ namespace CRUDreborn
                 .ConstructUsing(x => new CRUDreborn.Entities.Fabricante(x.Name, x.Description));
 
                 config.CreateMap<CreateProdutoInput, CRUDreborn.Entities.Produto>()
-                .ConstructUsing(x => new CRUDreborn.Entities.Produto(x.Name, x.Description, x.AssignedManufacturer, x.Consumable));
+                .ConstructUsing(x => new CRUDreborn.Entities.Produto(x.Name, x.Description, x.AssignedManufacturer_Id, x.AssignedManufacturer, x.Consumable));
 
                 config.CreateMap<UpdateProdutoInput, CRUDreborn.Entities.Produto>()
-                .ConstructUsing(x => new CRUDreborn.Entities.Produto(x.Name, x.Description, x.AssignedManufacturer, x.Consumable));
+                .ConstructUsing(x => new CRUDreborn.Entities.Produto(x.Name, x.Description, x.AssignedManufacturer_Id, x.AssignedManufacturer, x.Consumable));
 
                 config.CreateMap<CRUDreborn.Entities.Produto, GetAllProdutosOutput>().ReverseMap();
             });

@@ -56,14 +56,14 @@
                 });
             };
 
-            function openProdutoEditModal(fabricante) {
+            function openProdutoEditModal(produto) {
                 var modalInstance = $uibModal.open({
-                    templateUrl: '/App/Main/views/manufacturers/editModal.cshtml',
-                    controller: 'app.views.manufacturers.editModal as vm',
+                    templateUrl: '/App/Main/views/products/editModal.cshtml',
+                    controller: 'app.views.products.editModal as vm',
                     backdrop: 'static',
                     resolve: {
                         id: function () {
-                            return fabricante.id;
+                            return produto.id;
                         }
                     }
                 });
@@ -75,7 +75,7 @@
                 });
 
                 modalInstance.result.then(function () {
-                    getFabricantes();
+                    getProdutos();
                 });
             };
 
