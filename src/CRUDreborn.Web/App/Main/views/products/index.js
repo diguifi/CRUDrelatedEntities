@@ -19,7 +19,8 @@
             vm.produto = {
                 name: '',
                 description: '',
-                assignedManufacturer: '',
+                assignedManufacturer: [],
+                consumable: false
             }
 
             getFabricantes();
@@ -29,7 +30,6 @@
             function getProdutos() {
                 produtoService.getAllProdutos({}).then(function (result) {
                     vm.produtos = result.data.produtos;
-                    console.log(vm.produtos);
                 });
             }
 

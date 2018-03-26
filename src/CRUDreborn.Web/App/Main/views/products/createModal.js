@@ -12,7 +12,12 @@
             vm.save = save;
             vm.cancel = cancel;
 
-            vm.produto = {};
+            vm.produto = {
+                name : '',
+                description : '',
+                consumable : false,
+                assignedManufacturer : []
+            };
             vm.fabricantes = [];
             vm.fabricante = {};
 
@@ -26,11 +31,11 @@
 
             function getFabricante(fabricante) {
                 vm.fabricante = fabricante;
-                vm.produto.assignedManufacturer_Id = vm.fabricante.id
+                console.log(vm.produto)
+                vm.produto.assignedManufacturer = fabricante;
             }
 
             function save() {
-                
                 produtoService.createProduto(vm.produto)
                     .then(function () {
                         abp.notify.info(App.localize('SavedSuccessfully'));

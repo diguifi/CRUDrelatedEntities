@@ -10,16 +10,18 @@ namespace CRUDreborn.Entities
 {
     public class ProdutoManager : IDomainService, IProdutoManager
     {
-        private IRepository<Produto, long> _produtoRepository;
+        private IProductRepository _produtoRepository;
 
-        public ProdutoManager(IRepository<Produto, long> produtoRepository)
+        public ProdutoManager(IProductRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
         }
 
-        public async Task<long> Create(Produto produto)
+        public void Create(Produto produto)
         {
-            return await _produtoRepository.InsertAndGetIdAsync(produto);
+            _produtoRepository.InsertAndAttach(produto);
+            //_produtoRepository.InsertAndGetIdAsync(produto);
+            //return await _produtoRepository.InsertAndGetIdAsync(produto);
         }
 
         public async Task<Produto> Update(Produto produto)

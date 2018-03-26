@@ -19,14 +19,11 @@ namespace CRUDreborn.Produto
             _produtoManager = produtoManager;
         }
 
-        public async Task<CreateProdutoOutput> CreateProduto(CreateProdutoInput input)
+        public void CreateProduto(CreateProdutoInput input)
         {
             var produto = input.MapTo<CRUDreborn.Entities.Produto>();
-            var createdProdutoId = await _produtoManager.Create(produto);
-            return new CreateProdutoOutput
-            {
-                Id = createdProdutoId
-            };
+            _produtoManager.Create(produto);
+            
         }
 
         public async Task DeleteProduto(long id)
