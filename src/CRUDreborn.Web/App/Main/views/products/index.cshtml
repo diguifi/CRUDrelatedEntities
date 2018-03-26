@@ -35,7 +35,7 @@
                         <tr ng-repeat="product in vm.produtos">
                             <td>{{product.name}}</td>
                             <td>{{product.description}}</td>
-                            <td>{{product.assignedManufacturer.Id}}</td>
+                            <td>{{product.assignedManufacturer.name}}</td>
                             <td align="center">
                                 <i class="material-icons" ng-if="product.consumable" style="color:green;">check_box</i>
                                 <i class="material-icons" ng-if="!product.consumable" style="color:gray;">indeterminate_check_box</i>

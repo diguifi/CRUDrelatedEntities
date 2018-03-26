@@ -14,6 +14,6 @@ namespace CRUDreborn.Produto
         Task<UpdateProdutoOutput> UpdateProduto(UpdateProdutoInput input);
         Task DeleteProduto(long id);
         Task<GetProdutoByIdOutput> GetById(long id);
-        IEnumerable<GetAllProdutosOutput> GetAllProdutos();
+        GetAllProdutosOutput GetAllProdutos();
     }
 }

@@ -32,11 +32,11 @@ namespace CRUDreborn.Produto
             await _produtoManager.Delete(id);
         }
 
-        public IEnumerable<GetAllProdutosOutput> GetAllProdutos()
+        public GetAllProdutosOutput GetAllProdutos()
         {
             var produtos = _produtoManager.GetAll().ToList();
-            List<GetAllProdutosOutput> output = Mapper.Map<List<CRUDreborn.Entities.Produto>, List<GetAllProdutosOutput>>(produtos);
-            return output;
+            var output = Mapper.Map<List<GetAllProdutosItem>>(produtos);
+            return new GetAllProdutosOutput { Produtos = output };
         }
 
         public async Task<GetProdutoByIdOutput> GetById(long id)
