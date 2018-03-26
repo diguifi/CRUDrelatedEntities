@@ -12,6 +12,6 @@ namespace CRUDreborn.Entities
         Task<Produto> Update(Produto produto);
         Task Delete(long id);
         Task<Produto> GetById(long id);
-        Task<List<Produto>> GetAll();
+        IEnumerable<Produto> GetAll();
     }
 }

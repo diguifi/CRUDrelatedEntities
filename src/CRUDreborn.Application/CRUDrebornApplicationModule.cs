@@ -32,6 +32,8 @@ namespace CRUDreborn
 
                 config.CreateMap<UpdateProdutoInput, CRUDreborn.Entities.Produto>()
                 .ConstructUsing(x => new CRUDreborn.Entities.Produto(x.Name, x.Description, x.AssignedManufacturer, x.Consumable));
+
+                config.CreateMap<CRUDreborn.Entities.Produto, GetAllProdutosOutput>().ReverseMap();
             });
         }
 

@@ -39,9 +39,9 @@ namespace CRUDreborn.Entities
             return await _produtoRepository.GetAsync(id);
         }
 
-        public async Task<List<Produto>> GetAll()
+        public IEnumerable<Produto> GetAll()
         {
-            return await _produtoRepository.GetAllListAsync();
+            return _produtoRepository.GetAllIncluding(x => x.AssignedManufacturer);
         }
 
     }

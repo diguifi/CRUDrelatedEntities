@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201803211956174_criacao_tables.Designer.cs">
       <DependentUpon>201803211956174_criacao_tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803261411168_add_foreign_key.cs" />
+    <Compile Include="Migrations\201803261411168_add_foreign_key.Designer.cs">
+      <DependentUpon>201803261411168_add_foreign_key.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="CRUDrebornDataModule.cs" />
@@ -257,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803211956174_criacao_tables.resx">
       <DependentUpon>201803211956174_criacao_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261411168_add_foreign_key.resx">
+      <DependentUpon>201803261411168_add_foreign_key.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

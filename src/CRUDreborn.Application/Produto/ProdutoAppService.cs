@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.AutoMapper;
+using AutoMapper;
 using CRUDreborn.Entities;
 using CRUDreborn.Produto.Dtos;
 using System;
@@ -31,13 +32,11 @@ namespace CRUDreborn.Produto
             await _produtoManager.Delete(id);
         }
 
-        public async Task<GetAllProdutosOutput> GetAllProdutos()
+        public IEnumerable<GetAllProdutosOutput> GetAllProdutos()
         {
-            var produtos = await _produtoManager.GetAll();
-            return new GetAllProdutosOutput
-            {
-                Produtos = produtos.MapTo<List<GetAllProdutosItem>>()
-            };
+            var produtos = _produtoManager.GetAll().ToList();
+            List<GetAllProdutosOutput> output = Mapper.Map<List<CRUDreborn.Entities.Produto>, List<GetAllProdutosOutput>>(produtos);
+            return output;
         }
 
         public async Task<GetProdutoByIdOutput> GetById(long id)

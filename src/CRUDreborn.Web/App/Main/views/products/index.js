@@ -29,7 +29,8 @@
 
             function getProdutos() {
                 produtoService.getAllProdutos({}).then(function (result) {
-                    vm.produtos = result.data.produtos;
+                    vm.produtos = result.data;
+                    console.log(vm.produtos);
                 });
             }
 
