@@ -34,14 +34,8 @@
 
 
         <div class="form-group">
-            <div ng-repeat="fabricante in vm.fabricantes">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons">menu</i>
-                </a>
-                <ul class="dropdown-menu pull-left">
-                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.getFabricante(fabricante)"><i class="material-icons">create</i>{{fabricante.name}}</a></li>
-                </ul>
-            </div>
+            <select class="form-control" id="sel1" ng-model="vm.fabricante" ng-options="fabricante.name for fabricante in vm.fabricantes">
+            </select>
         </div>
 
 

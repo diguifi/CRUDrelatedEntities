@@ -1,6 +1,8 @@
 ﻿using Abp.AutoMapper;
+using AutoMapper;
 using CRUDreborn.Entities;
 using CRUDreborn.Fabricante.Dtos;
+using CRUDreborn.Produto.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +14,12 @@ namespace CRUDreborn.Fabricante
     public class FabricanteAppService : IFabricanteAppService
     {
         private IFabricanteManager _fabricanteManager;
+        private IProdutoManager _produtoManager;
 
-        public FabricanteAppService(IFabricanteManager fabricanteManager)
+        public FabricanteAppService(IFabricanteManager fabricanteManager, IProdutoManager produtoManager)
         {
             _fabricanteManager = fabricanteManager;
+            _produtoManager = produtoManager;
         }
 
         public async Task<CreateFabricanteOutput> CreateFabricante(CreateFabricanteInput input)
@@ -42,10 +46,10 @@ namespace CRUDreborn.Fabricante
             };
         }
 
-        public async Task<GetFabricanteByIdOutput> GetById(long id)
+        public async Task<Dtos.GetFabricanteByIdOutput> GetById(long id)
         {
             var fabricante = await _fabricanteManager.GetById(id);
-            return fabricante.MapTo<GetFabricanteByIdOutput>();
+            return fabricante.MapTo<Dtos.GetFabricanteByIdOutput>();
         }
 
         public async Task<UpdateFabricanteOutput> UpdateFabricante(UpdateFabricanteInput input)
@@ -54,5 +58,12 @@ namespace CRUDreborn.Fabricante
             var fabricanteUpdated = await _fabricanteManager.Update(fabricante);
             return fabricanteUpdated.MapTo<UpdateFabricanteOutput>();
         }
-    }
+
+        public GetAllProdutosOutput GetAllAssignedProdutos(long fab_id)
+        {
+            var produtos = _produtoManager.GetAllFromFabricante(fab_id).ToList();
+            var output = Mapper.Map<List<GetAllProdutosItem>>(produtos);
+            return new GetAllProdutosOutput { Produtos = output };
+        }
+     }
 }

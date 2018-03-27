@@ -13,5 +13,6 @@ namespace CRUDreborn.Entities
         Task Delete(long id);
         Task<Produto> GetById(long id);
         IEnumerable<Produto> GetAll();
+        IEnumerable<Produto> GetAllFromFabricante(long fab_id);
     }
 }

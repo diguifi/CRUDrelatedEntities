@@ -42,5 +42,19 @@ namespace CRUDreborn.Entities
             return _produtoRepository.GetAllIncluding(x => x.AssignedManufacturer);
         }
 
+        public IEnumerable<Produto> GetAllFromFabricante(long fab_id)
+        {
+            IEnumerable<Produto> produtos = GetAll();
+
+            IEnumerable<Produto> filteringQuery = produtos.Where(p => p.AssignedManufacturer_Id == fab_id);
+
+            //IEnumerable<Produto> filteringQuery =
+            //    from prod in produtos
+            //    where prod.AssignedManufacturer_Id == fab_id
+            //    select prod;
+
+            return filteringQuery;
+        }
+
     }
 }

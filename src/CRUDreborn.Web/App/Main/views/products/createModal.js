@@ -8,7 +8,6 @@
 
         function ($scope, $uibModalInstance, produtoService, fabricanteService) {
             var vm = this;
-            vm.getFabricante = getFabricante;
             vm.save = save;
             vm.cancel = cancel;
 
@@ -29,13 +28,8 @@
                 });
             }
 
-            function getFabricante(fabricante) {
-                vm.fabricante = fabricante;
-                console.log(vm.produto)
-                vm.produto.assignedManufacturer = fabricante;
-            }
-
             function save() {
+                vm.produto.assignedManufacturer = vm.fabricante;
                 produtoService.createProduto(vm.produto)
                     .then(function () {
                         abp.notify.info(App.localize('SavedSuccessfully'));

@@ -10,6 +10,7 @@
             var vm = this;
             vm.openFabricanteCreationModal = openFabricanteCreationModal;
             vm.openFabricanteEditModal = openFabricanteEditModal;
+            vm.openFabricanteProductsModal = openFabricanteProductsModal;
             vm.delete = Delete;
             vm.refresh = refresh;
 
@@ -43,6 +44,29 @@
                 var modalInstance = $uibModal.open({
                     templateUrl: '/App/Main/views/manufacturers/editModal.cshtml',
                     controller: 'app.views.manufacturers.editModal as vm',
+                    backdrop: 'static',
+                    resolve: {
+                        id: function () {
+                            return fabricante.id;
+                        }
+                    }
+                });
+
+                modalInstance.rendered.then(function () {
+                    $timeout(function () {
+                        $.AdminBSB.input.activate();
+                    }, 0);
+                });
+
+                modalInstance.result.then(function () {
+                    getFabricantes();
+                });
+            };
+
+            function openFabricanteProductsModal(fabricante) {
+                var modalInstance = $uibModal.open({
+                    templateUrl: '/App/Main/views/manufacturers/productsListing.cshtml',
+                    controller: 'app.views.manufacturers.productsListing as vm',
                     backdrop: 'static',
                     resolve: {
                         id: function () {

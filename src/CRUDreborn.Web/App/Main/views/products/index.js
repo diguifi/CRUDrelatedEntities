@@ -1,6 +1,4 @@
-﻿//NOT GETTING MANUFACTURER
-
-(function () {
+﻿(function () {
     'use strict';
 
     angular

@@ -25,6 +25,7 @@
                         <tr>
                             <th>@L("Name")</th>
                             <th>@L("Description")</th>
+                            <th>@L("SeeProducts")</th>
                             <th>@L("Actions")</th>
                         </tr>
                     </thead>
@@ -32,6 +33,11 @@
                         <tr ng-repeat="manufacturer in vm.fabricantes">
                             <td>{{manufacturer.name}}</td>
                             <td>{{manufacturer.description}}</td>
+                            <td>
+                                <button type="button" data-toggle="modal" class="btn bg-teal waves-effect" ng-click="vm.openFabricanteProductsModal(manufacturer)">
+                                    <i class="material-icons">search</i>
+                                </button>
+                            </td>
                             <td class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">menu</i>
