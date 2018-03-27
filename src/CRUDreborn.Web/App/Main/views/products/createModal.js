@@ -1,6 +1,4 @@
-﻿//NOT SAVING ASSIGNEDMANUFACTURER_ID
-
-(function () {
+﻿(function () {
     angular
     .module('app')
     .controller('app.views.products.createModal',
