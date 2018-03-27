@@ -23,6 +23,8 @@
     <text name="EditProduct" value="Editar produto" />
     <text name="SeeProducts" value="Ver produtos" />
     <text name="AssociatedProducts" value="Produtos associados" />
+    <text name="Stock" value="Estoque" />
+    <text name="System" value="Sistema" />
     <text name="Ok" value="Ok" />
 
     <text name="LoginFailed" value="Falha no login!" />

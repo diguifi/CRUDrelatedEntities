@@ -1,8 +1,19 @@
 ﻿(function () {
     var controllerId = 'app.views.home';
     angular.module('app').controller(controllerId, [
-        '$scope', function ($scope) {
+        '$scope', 'abp.services.app.produto',
+        function ($scope, produtoService) {
             var vm = this;
+            vm.produtos = [];
+            vm.qtdProdutos = 0;
+            getProdutos();
+
+            function getProdutos() {
+                produtoService.getAllProdutos({}).then(function (result) {
+                    vm.produtos = result.data.produtos;
+                    vm.qtdProdutos = vm.produtos.length;
+                });
+            }
 
             var init = function () {
 

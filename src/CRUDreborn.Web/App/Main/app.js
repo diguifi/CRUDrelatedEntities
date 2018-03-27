@@ -70,6 +70,11 @@
                     url: '/products',
                     templateUrl: '/App/Main/views/products/index.cshtml',
                     menu: 'Products'
+                })
+                .state('stock', {
+                    url: '/stock',
+                    templateUrl: '/App/Main/views/stock/index.cshtml',
+                    menu: 'Stock'
                 });
         }
     ]);
