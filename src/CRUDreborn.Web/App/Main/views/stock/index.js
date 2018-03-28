@@ -50,14 +50,14 @@
                     });
                 };
 
-                function openEstoqueEditModal(produto) {
+                function openEstoqueEditModal(estoque) {
                     var modalInstance = $uibModal.open({
-                        templateUrl: '/App/Main/views/products/editModal.cshtml',
-                        controller: 'app.views.products.editModal as vm',
+                        templateUrl: '/App/Main/views/stock/editModal.cshtml',
+                        controller: 'app.views.stock.editModal as vm',
                         backdrop: 'static',
                         resolve: {
                             id: function () {
-                                return produto.id;
+                                return estoque.id;
                             }
                         }
                     });
@@ -69,19 +69,19 @@
                     });
 
                     modalInstance.result.then(function () {
-                        getProdutos();
+                        getEstoque();
                     });
                 };
 
-                function Delete(produto) {
+                function Delete(estoque) {
                     abp.message.confirm(
-                        "Delete produto '" + produto.name + "'?",
+                        "Remover produto '" + estoque.assignedProduct.name + "' da lista de estoque?",
                         function (result) {
                             if (result) {
-                                produtoService.deleteProduto(produto.id)
+                                estoqueService.deleteEstoque(estoque.id)
                                     .then(function () {
-                                        abp.notify.info("Deleted produto: " + produto.name);
-                                        getProdutos();
+                                        abp.notify.info("Registro de estoque para: " + estoque.assignedProduct.name + " removido");
+                                        getEstoque();
                                     });
                             }
                         });

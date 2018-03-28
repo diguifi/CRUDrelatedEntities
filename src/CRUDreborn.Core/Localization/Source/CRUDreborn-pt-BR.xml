@@ -30,6 +30,7 @@
     <text name="Sales" value="Vendas" />
     <text name="Price" value="Preço" />
     <text name="Ok" value="Ok" />
+    <text name="$" value="R$" />
 
     <text name="LoginFailed" value="Falha no login!" />
 

@@ -35,7 +35,7 @@
                         <tr ng-repeat="stock in vm.estoque">
                             <td>{{stock.assignedProduct.name}}</td>
                             <td>{{stock.stock}}</td>
-                            <td>{{stock.price}}</td>
+                            <td>@L("$") {{stock.price}}</td>
                             <td align="center">
                                 <i class="material-icons" ng-if="stock.assignedProduct.consumable" style="color:green;">check_box</i>
                                 <i class="material-icons" ng-if="!stock.assignedProduct.consumable" style="color:gray;">indeterminate_check_box</i>
@@ -45,8 +45,8 @@
                                     <i class="material-icons">menu</i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.openEstoqueEditModal(product)"><i class="material-icons">create</i>@L("Edit")</a></li>
-                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.deleteEstoque(product)"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.openEstoqueEditModal(stock)"><i class="material-icons">create</i>@L("Edit")</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.deleteEstoque(stock)"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
                                 </ul>
                             </td>
                         </tr>

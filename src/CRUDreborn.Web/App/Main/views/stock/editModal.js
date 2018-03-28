@@ -1,13 +1,14 @@
 ﻿(function () {
     angular
         .module('app')
-        .controller('app.views.stock.createModal',
-        ['$scope', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque',
+        .controller('app.views.stock.editModal',
+        ['$scope', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque', 'id',
 
-            function ($scope, $uibModalInstance, produtoService, estoqueService) {
+            function ($scope, $uibModalInstance, produtoService, estoqueService, id) {
                 var vm = this;
                 vm.save = save;
                 vm.cancel = cancel;
+                vm.setProduto = setProduto;
                 vm.priceUp = priceUp;
                 vm.priceDown = priceDown;
                 vm.stockUp = stockUp;
@@ -18,10 +19,12 @@
                     price: 0.0,
                     assignedProduct: []
                 };
+
                 vm.produtos = [];
                 vm.produto = {};
 
                 getProdutos();
+                activate();
 
                 function getProdutos() {
                     produtoService.getAllProdutos({}).then(function (result) {
@@ -29,9 +32,25 @@
                     });
                 }
 
+                function setProduto(produto) {
+                    vm.produto = produto;
+                }
+
+                function activate() {
+                    estoqueService.getById(id)
+                        .then(function (result) {
+                            vm.estoque = result.data;
+                            produtoService.getById(vm.estoque.assignedProduct_Id)
+                                .then(function (result) {
+                                    vm.estoque.assignedProduct = result.data;
+                                    setProduto(vm.estoque.assignedProduct);
+                                });
+                        });
+                }
+
                 function save() {
-                    vm.estoque.assignedProduct = vm.produto;
-                    estoqueService.createEstoque(vm.estoque)
+                    vm.estoque.assignedProduct_Id = vm.produto.id
+                    estoqueService.updateEstoque(vm.estoque)
                         .then(function () {
                             abp.notify.info(App.localize('SavedSuccessfully'));
                             $uibModalInstance.close();
@@ -46,7 +65,7 @@
                     vm.estoque.price++;
                 }
                 function priceDown() {
-                    if (vm.estoque.price>0)
+                    if (vm.estoque.price > 0)
                         vm.estoque.price--;
                 }
 

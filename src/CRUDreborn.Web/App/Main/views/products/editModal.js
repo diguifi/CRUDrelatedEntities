@@ -9,6 +9,7 @@
         function ($scope, $uibModalInstance, produtoService, fabricanteService, id) {
             var vm = this;
             vm.save = save;
+            vm.cancel = cancel;
             vm.setFabricante = setFabricante;
             
 
@@ -51,7 +52,7 @@
                     });
             };
 
-            vm.cancel = function () {
+            function cancel() {
                 $uibModalInstance.dismiss({});
             };
 
