@@ -20,7 +20,7 @@
                 getProdutos();
 
                 function getProdutos() {
-                    produtoService.getAllFabricantes({}).then(function (result) {
+                    produtoService.getAllProdutos({}).then(function (result) {
                         vm.produtos = result.data.produtos;
                     });
                 }

@@ -13,17 +13,16 @@
                 <div class="form-group form-float">
                     <label for="productname" class="form-label">@L("Stock")</label>
                     <div class="form-line">
-                        <input id="productname" type="text" name="ProductName" ng-model="vm.estoque.stock" required maxlength="12" minlength="2" class="validate form-control">
+                        <input id="productname" type="text" name="ProductName" ng-model="vm.estoque.stock" required maxlength="12" minlength="1" class="validate form-control">
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row clearfix">
+        
             <div class="col-sm-6">
                 <div class="form-group form-float">
                     <label for="description" class="form-label">@L("Price")</label>
                     <div class="form-line">
-                        <input id="description" type="text" name="Description" ng-model="vm.estoque.price" required maxlength="100" minlength="2" class="validate form-control">
+                        <input id="description" type="text" name="Description" ng-model="vm.estoque.price" required maxlength="100" minlength="1" class="validate form-control">
                     </div>
                 </div>
             </div>

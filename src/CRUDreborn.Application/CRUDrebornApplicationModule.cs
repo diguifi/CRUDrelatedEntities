@@ -7,6 +7,7 @@ using Abp.Domain.Repositories;
 using Abp.Modules;
 using CRUDreborn.Authorization.Roles;
 using CRUDreborn.Authorization.Users;
+using CRUDreborn.Estoque.Dtos;
 using CRUDreborn.Fabricante.Dtos;
 using CRUDreborn.Produto.Dtos;
 using CRUDreborn.Roles.Dto;
@@ -34,6 +35,14 @@ namespace CRUDreborn
                 .ConstructUsing(x => new CRUDreborn.Entities.Produto(x.Name, x.Description, x.AssignedManufacturer_Id, x.AssignedManufacturer, x.Consumable));
 
                 config.CreateMap<CRUDreborn.Entities.Produto, GetAllProdutosOutput>().ReverseMap();
+
+                config.CreateMap<CreateEstoqueInput, CRUDreborn.Entities.Estoque>()
+                .ConstructUsing(x => new CRUDreborn.Entities.Estoque(x.Stock, x.Price, x.AssignedProduct_Id, x.AssignedProduct));
+
+                config.CreateMap<UpdateEstoqueInput, CRUDreborn.Entities.Estoque>()
+                .ConstructUsing(x => new CRUDreborn.Entities.Estoque(x.Stock, x.Price, x.AssignedProduct_Id, x.AssignedProduct));
+
+                config.CreateMap<CRUDreborn.Entities.Estoque, GetAllEstoqueOutput>().ReverseMap();
             });
         }
 

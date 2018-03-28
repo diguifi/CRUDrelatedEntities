@@ -41,6 +41,7 @@
     <text name="Manufacturers" value="Fabricantes" />
     <text name="Manufacturer" value="Fabricante" />
     <text name="Products" value="Produtos" />
+    <text name="Product" value="Produto" />
     <text name="Consumable" value="Consumível" />
     <text name="Surname" value="Sobrenome" />
     <text name="EmailAddress" value="Endereço de e-mail" />
