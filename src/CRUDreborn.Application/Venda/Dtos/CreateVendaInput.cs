@@ -8,8 +8,8 @@ namespace CRUDreborn.Venda.Dtos
 {
     public class CreateVendaInput
     {
-        public long Product_Id { get; set; }
+        public long AssignedProduct_Id { get; set; }
+        public CRUDreborn.Entities.Produto AssignedProduct { get; set; }
         public long Quantity { get; set; }
-        public string ProductName { get; set; }
     }
 }

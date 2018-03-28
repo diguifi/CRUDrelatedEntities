@@ -208,6 +208,7 @@
     <Compile Include="EntityFramework\Repositories\CRUDrebornRepositoryBase.cs" />
     <Compile Include="EntityFramework\Repositories\EstoqueRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\VendaRepository.cs" />
     <Compile Include="Migrations\201707261347311_Initial_Migration.cs" />
     <Compile Include="Migrations\201707261347311_Initial_Migration.Designer.cs">
       <DependentUpon>201707261347311_Initial_Migration.cs</DependentUpon>
@@ -239,6 +240,10 @@
     <Compile Include="Migrations\201803282016255_venda-implement.cs" />
     <Compile Include="Migrations\201803282016255_venda-implement.Designer.cs">
       <DependentUpon>201803282016255_venda-implement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803282045500_venda-correction.cs" />
+    <Compile Include="Migrations\201803282045500_venda-correction.Designer.cs">
+      <DependentUpon>201803282045500_venda-correction.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -286,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803282016255_venda-implement.resx">
       <DependentUpon>201803282016255_venda-implement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803282045500_venda-correction.resx">
+      <DependentUpon>201803282045500_venda-correction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

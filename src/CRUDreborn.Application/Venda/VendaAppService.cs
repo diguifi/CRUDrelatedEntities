@@ -1,4 +1,5 @@
 ﻿using Abp.AutoMapper;
+using AutoMapper;
 using CRUDreborn.Entities;
 using CRUDreborn.Venda.Dtos;
 using System;
@@ -18,14 +19,10 @@ namespace CRUDreborn.Venda
             _vendaManager = vendaManager;
         }
 
-        public async Task<CreateVendaOutput> CreateVenda(CreateVendaInput input)
+        public void CreateVenda(CreateVendaInput input)
         {
             var venda = input.MapTo<CRUDreborn.Entities.Venda>();
-            var createdVendaId = await _vendaManager.Create(venda);
-            return new CreateVendaOutput
-            {
-                //Id = createdVendaId
-            };
+            _vendaManager.Create(venda);
         }
 
         public async Task DeleteVenda(long id)
@@ -33,13 +30,11 @@ namespace CRUDreborn.Venda
             await _vendaManager.Delete(id);
         }
 
-        public async Task<GetAllVendasOutput> GetAllVendas()
+        public GetAllVendasOutput GetAllVendas()
         {
-            var venda = await _vendaManager.GetAll();
-            return new GetAllVendasOutput
-            {
-                Vendas = venda.MapTo<List<GetAllVendasItem>>()
-            };
+            var venda = _vendaManager.GetAll().ToList();
+            var output = Mapper.Map<List<GetAllVendasItem>>(venda);
+            return new GetAllVendasOutput { Vendas = output };
         }
 
         public async Task<GetVendaByIdOutput> GetById(long id)

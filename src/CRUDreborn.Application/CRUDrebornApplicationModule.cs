@@ -46,10 +46,10 @@ namespace CRUDreborn
                 config.CreateMap<CRUDreborn.Entities.Estoque, GetAllEstoqueOutput>().ReverseMap();
 
                 config.CreateMap<CreateVendaInput, CRUDreborn.Entities.Venda>()
-                .ConstructUsing(x => new CRUDreborn.Entities.Venda(x.Product_Id, x.Quantity, x.ProductName));
+                .ConstructUsing(x => new CRUDreborn.Entities.Venda(x.AssignedProduct_Id, x.AssignedProduct, x.Quantity));
 
                 config.CreateMap<UpdateVendaInput, CRUDreborn.Entities.Venda>()
-                .ConstructUsing(x => new CRUDreborn.Entities.Venda(x.Product_Id, x.Quantity, x.ProductName));
+                .ConstructUsing(x => new CRUDreborn.Entities.Venda(x.AssignedProduct_Id, x.AssignedProduct, x.Quantity));
             });
         }
 

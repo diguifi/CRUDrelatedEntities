@@ -10,16 +10,16 @@ namespace CRUDreborn.Entities
 {
     public class VendaManager : IDomainService, IVendaManager
     {
-        private IRepository<Venda, long> _vendaRepository;
+        private IVendaRepository _vendaRepository;
 
-        public VendaManager(IRepository<Venda, long> vendaRepository)
+        public VendaManager(IVendaRepository vendaRepository)
         {
             _vendaRepository = vendaRepository;
         }
 
-        public async Task<long> Create(Venda venda)
+        public void Create(Venda venda)
         {
-            return await _vendaRepository.InsertAndGetIdAsync(venda);
+            _vendaRepository.InsertAndAttach(venda);
         }
 
         public async Task<Venda> Update(Venda venda)
@@ -37,9 +37,9 @@ namespace CRUDreborn.Entities
             return await _vendaRepository.GetAsync(id);
         }
 
-        public async Task<List<Venda>> GetAll()
+        public IEnumerable<Venda> GetAll()
         {
-            return await _vendaRepository.GetAllListAsync();
+            return _vendaRepository.GetAllIncluding(x => x.AssignedProduct);
         }
     }
 }
