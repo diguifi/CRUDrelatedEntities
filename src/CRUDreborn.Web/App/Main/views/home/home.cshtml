@@ -3,7 +3,7 @@
 <div ng-controller="app.views.home as vm">
 
     <div class="block-header">
-        <h2>@L("WellcomeMessage")</h2>
+        <h2>@L("WellcomeMessageHome")</h2>
     </div>
 
     <!-- Widgets -->
@@ -15,7 +15,7 @@
                 </div>
                 <div class="content">
                     <div class="text">PRODUCTS</div>
-                    <div class="number count-to" data-from="0" data-to="8" data-speed="500" data-fresh-interval="20"></div>
+                    <font size="5">{{vm.qtdProdutos}}</font>
                 </div>
             </div>
         </div>
@@ -104,15 +104,15 @@
                     <ul class="dashboard-stat-list">
                         <li>
                             TODAY
-                            <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                            <span class="pull-right"><b>1 200</b> <small>@L("Sales")</small></span>
                         </li>
                         <li>
                             YESTERDAY
-                            <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                            <span class="pull-right"><b>3 872</b> <small>@L("Sales")</small></span>
                         </li>
                         <li>
                             LAST WEEK
-                            <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
+                            <span class="pull-right"><b>26 582</b> <small>@L("Sales")</small></span>
                         </li>
                     </ul>
                 </div>

@@ -4,6 +4,7 @@
     <text name="HomePage" value="Página Inicial" />
     <text name="About" value="Sobre" />
     <text name="WellcomeMessage" value="Bem Vindo ao CRUDreborn!" />
+    <text name="WellcomeMessageHome" value="SEU DASHBOARD" />
     
     <text name="FormIsNotValidMessage" value="Formulário não é válido. Por favor, verifique e corrija os erros." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant não pode estar vazio" />
@@ -25,6 +26,8 @@
     <text name="AssociatedProducts" value="Produtos associados" />
     <text name="Stock" value="Estoque" />
     <text name="System" value="Sistema" />
+    <text name="Sales" value="Vendas" />
+    <text name="Price" value="Preço" />
     <text name="Ok" value="Ok" />
 
     <text name="LoginFailed" value="Falha no login!" />

@@ -20,23 +20,23 @@ namespace CRUDreborn.Migrations
         protected override void Seed(CRUDreborn.EntityFramework.CRUDrebornDbContext context)
         {
 
-            //context.DisableAllFilters();
+            context.DisableAllFilters();
 
-            //if (Tenant == null)
-            //{
-            //    //Host seed
-            //    new InitialHostDbBuilder(context).Create();
+            if (Tenant == null)
+            {
+                //Host seed
+                new InitialHostDbBuilder(context).Create();
 
-            //    //Default tenant seed (in host database).
-            //    new DefaultTenantCreator(context).Create();
-            //    new TenantRoleAndUserBuilder(context, 1).Create();
-            //}
-            //else
-            //{
-            //    //You can add seed for tenant databases and use Tenant property...
-            //}
+                //Default tenant seed (in host database).
+                new DefaultTenantCreator(context).Create();
+                new TenantRoleAndUserBuilder(context, 1).Create();
+            }
+            else
+            {
+                //You can add seed for tenant databases and use Tenant property...
+            }
 
-            //context.SaveChanges();
+            context.SaveChanges();
         }
     }
 }

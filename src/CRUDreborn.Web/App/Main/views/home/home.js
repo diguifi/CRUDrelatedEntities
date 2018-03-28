@@ -7,6 +7,7 @@
             vm.produtos = [];
             vm.qtdProdutos = 0;
             getProdutos();
+            
 
             function getProdutos() {
                 produtoService.getAllProdutos({}).then(function (result) {
