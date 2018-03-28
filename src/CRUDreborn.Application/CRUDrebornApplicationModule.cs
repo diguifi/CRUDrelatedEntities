@@ -12,6 +12,7 @@ using CRUDreborn.Fabricante.Dtos;
 using CRUDreborn.Produto.Dtos;
 using CRUDreborn.Roles.Dto;
 using CRUDreborn.Users.Dto;
+using CRUDreborn.Venda.Dtos;
 
 namespace CRUDreborn
 {
@@ -43,6 +44,12 @@ namespace CRUDreborn
                 .ConstructUsing(x => new CRUDreborn.Entities.Estoque(x.Stock, x.Price, x.AssignedProduct_Id, x.AssignedProduct));
 
                 config.CreateMap<CRUDreborn.Entities.Estoque, GetAllEstoqueOutput>().ReverseMap();
+
+                config.CreateMap<CreateVendaInput, CRUDreborn.Entities.Venda>()
+                .ConstructUsing(x => new CRUDreborn.Entities.Venda(x.Product_Id, x.Quantity, x.ProductName));
+
+                config.CreateMap<UpdateVendaInput, CRUDreborn.Entities.Venda>()
+                .ConstructUsing(x => new CRUDreborn.Entities.Venda(x.Product_Id, x.Quantity, x.ProductName));
             });
         }
 

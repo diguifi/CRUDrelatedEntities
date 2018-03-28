@@ -21,6 +21,9 @@
     <text name="LogIn" value="Entrar" />
     <text name="CreateNewProduct" value="Criar novo produto" />
     <text name="CreateNewStock" value="Adicionar estoque" />
+    <text name="Quantity" value="Quantidade" />
+    <text name="NewSale" value="NOVA VENDA" />
+    <text name="CreateSale" value="Nova venda" />
     <text name="EditManufacturer" value="Editar fabricante" />
     <text name="EditProduct" value="Editar produto" />
     <text name="SeeProducts" value="Ver produtos" />
@@ -29,6 +32,8 @@
     <text name="System" value="Sistema" />
     <text name="Sales" value="Vendas" />
     <text name="Price" value="Preço" />
+    <text name="Total" value="Total" />
+    <text name="Details" value="Detalhes" />
     <text name="Ok" value="Ok" />
     <text name="$" value="R$" />
 

@@ -7,16 +7,16 @@
 
             vm.menuItems = [
                 createMenuItem(App.localize("HomePage"), "", "home", "home"),
-
-                createMenuItem(App.localize("Manufacturers"), "", "business", "manufacturers"),
-                createMenuItem(App.localize("Products"), "", "shopping_basket", "products"),
+                createMenuItem(App.localize("Sales"), "", "attach_money", "sales"),
                 createMenuItem(App.localize("Stock"), "", "content_paste", "stock"),
+                createMenuItem(App.localize("Products"), "", "shopping_basket", "products"),
+                createMenuItem(App.localize("Manufacturers"), "", "business", "manufacturers"),
                 
-                createMenuItem(App.localize("About"), "", "info", "about"),
                 
                 createMenuItem(App.localize("System"), "", "menu", "", [
                     createMenuItem(App.localize("Users"), "Pages.Users", "people", "users"),
-                    createMenuItem(App.localize("Roles"), "Pages.Roles", "local_offer", "roles")
+                    createMenuItem(App.localize("Roles"), "Pages.Roles", "local_offer", "roles"),
+                    createMenuItem(App.localize("About"), "", "info", "about")
                 ])
             ];
 

@@ -14,6 +14,7 @@ namespace CRUDreborn.EntityFramework
         public virtual IDbSet<Produto> Produtos { get; set; }
         public virtual IDbSet<Fabricante> Fabricantes { get; set; }
         public virtual IDbSet<Estoque> Estoque { get; set; }
+        public virtual IDbSet<Venda> Venda { get; set; }
         //TODO: Define an IDbSet for your Entities...
 
         /* NOTE: 

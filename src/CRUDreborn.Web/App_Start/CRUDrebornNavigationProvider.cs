@@ -79,6 +79,14 @@ namespace CRUDreborn.Web
                         url: "#/stock",
                         icon: "fa fa-archive"
                         )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        "Sales",
+                        new LocalizableString("Sales", CRUDrebornConsts.LocalizationSourceName),
+                        url: "#/sales",
+                        icon: "fa fa-money-bill-alt"
+                        )
                 );
         }
 

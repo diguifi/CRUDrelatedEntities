@@ -476,6 +476,7 @@
     <Content Include="App\Main\views\roles\editModal.js" />
     <Content Include="App\Main\views\roles\createModal.js" />
     <Content Include="App\Main\views\roles\index.js" />
+    <Content Include="App\Main\views\sales\index.js" />
     <Content Include="App\Main\views\stock\createModal.js" />
     <Content Include="App\Main\views\stock\editModal.js" />
     <Content Include="App\Main\views\stock\index.js" />
@@ -2824,6 +2825,7 @@
     <Content Include="App\Main\views\stock\index.cshtml" />
     <Content Include="App\Main\views\stock\createModal.cshtml" />
     <Content Include="App\Main\views\stock\editModal.cshtml" />
+    <Content Include="App\Main\views\sales\index.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">

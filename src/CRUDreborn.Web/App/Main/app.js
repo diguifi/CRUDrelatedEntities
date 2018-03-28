@@ -75,6 +75,11 @@
                     url: '/stock',
                     templateUrl: '/App/Main/views/stock/index.cshtml',
                     menu: 'Stock'
+                })
+                .state('sales', {
+                    url: '/sales',
+                    templateUrl: '/App/Main/views/sales/index.cshtml',
+                    menu: 'Sales'
                 });
         }
     ]);

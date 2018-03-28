@@ -209,8 +209,11 @@
     <Compile Include="Entities\IFabricanteRepository.cs" />
     <Compile Include="Entities\IProductRepository.cs" />
     <Compile Include="Entities\IProdutoManager.cs" />
+    <Compile Include="Entities\IVendaManager.cs" />
     <Compile Include="Entities\Produto.cs" />
     <Compile Include="Entities\ProdutoManager.cs" />
+    <Compile Include="Entities\Venda.cs" />
+    <Compile Include="Entities\VendaManager.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />

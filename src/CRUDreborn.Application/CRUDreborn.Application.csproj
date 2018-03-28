@@ -255,6 +255,15 @@
     <Compile Include="Sessions\ISessionAppService.cs" />
     <Compile Include="Sessions\SessionAppService.cs" />
     <Compile Include="Users\UserAppService.cs" />
+    <Compile Include="Venda\Dtos\CreateVendaInput.cs" />
+    <Compile Include="Venda\Dtos\CreateVendaOutput.cs" />
+    <Compile Include="Venda\Dtos\GetAllVendasItem.cs" />
+    <Compile Include="Venda\Dtos\GetAllVendasOutput.cs" />
+    <Compile Include="Venda\Dtos\GetVendaByIdOutput.cs" />
+    <Compile Include="Venda\Dtos\UpdateVendaInput.cs" />
+    <Compile Include="Venda\Dtos\UpdateVendaOutput.cs" />
+    <Compile Include="Venda\IVendaAppService.cs" />
+    <Compile Include="Venda\VendaAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
