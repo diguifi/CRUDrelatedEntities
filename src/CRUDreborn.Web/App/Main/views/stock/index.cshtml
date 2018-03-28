@@ -32,13 +32,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="product in vm.produtos">
-                            <td>{{product.name}}</td>
-                            <td>{{product.stock}}</td>
-                            <td>{{product.price}}</td>
+                        <tr ng-repeat="stock in vm.estoque">
+                            <td>{{stock.assignedProduct.name}}</td>
+                            <td>{{stock.stock}}</td>
+                            <td>{{stock.price}}</td>
                             <td align="center">
-                                <i class="material-icons" ng-if="product.consumable" style="color:green;">check_box</i>
-                                <i class="material-icons" ng-if="!product.consumable" style="color:gray;">indeterminate_check_box</i>
+                                <i class="material-icons" ng-if="stock.assignedProduct.consumable" style="color:green;">check_box</i>
+                                <i class="material-icons" ng-if="!stock.assignedProduct.consumable" style="color:gray;">indeterminate_check_box</i>
                             </td>
                             <td class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

@@ -3,10 +3,10 @@
 
     angular
         .module('app')
-        .controller('app.views.products.index',
-        ['$scope', '$timeout', '$uibModal', 'abp.services.app.produto',
+        .controller('app.views.stock.index',
+        ['$scope', '$timeout', '$uibModal', 'abp.services.app.estoque', 'abp.services.app.produto',
 
-            function ProductsController($scope, $timeout, $uibModal, produtoService) {
+            function ProductsController($scope, $timeout, $uibModal, estoqueService, produtoService) {
                 var vm = this;
                 vm.openEstoqueCreationModal = openEstoqueCreationModal;
                 vm.openEstoqueEditModal = openEstoqueEditModal;
@@ -14,26 +14,30 @@
                 vm.refresh = refresh;
 
                 vm.produtos = [];
-                vm.produto = {
-                    name: '',
-                    description: '',
-                    assignedManufacturer: [],
-                    consumable: false
-                }
+                vm.estoque = [];
                
                 getProdutos();
+                getEstoque();
 
+
+                function getEstoque() {
+                    estoqueService.getAllEstoque({})
+                        .then(function (result) {
+                            vm.estoque = result.data.estoque;
+                        });
+                }
 
                 function getProdutos() {
-                    produtoService.getAllProdutos({}).then(function (result) {
-                        vm.produtos = result.data.produtos;
-                    });
+                    produtoService.getAllProdutos({})
+                        .then(function (result) {
+                            vm.produtos = result.data;
+                        });
                 }
 
                 function openEstoqueCreationModal() {
                     var modalInstance = $uibModal.open({
-                        templateUrl: '/App/Main/views/products/createModal.cshtml',
-                        controller: 'app.views.products.createModal as vm',
+                        templateUrl: '/App/Main/views/stock/createModal.cshtml',
+                        controller: 'app.views.stock.createModal as vm',
                         backdrop: 'static'
                     });
 
@@ -42,7 +46,7 @@
                     });
 
                     modalInstance.result.then(function () {
-                        getProdutos();
+                        getEstoque();
                     });
                 };
 
@@ -84,7 +88,7 @@
                 }
 
                 function refresh() {
-                    getProdutos();
+                    getEstoque();
                 };
 
             }

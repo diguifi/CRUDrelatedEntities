@@ -206,6 +206,15 @@
     <Compile Include="Configuration\IConfigurationAppService.cs" />
     <Compile Include="Configuration\Ui\UiThemeInfo.cs" />
     <Compile Include="Configuration\Ui\UiThemes.cs" />
+    <Compile Include="Estoque\Dtos\CreateEstoqueInput.cs" />
+    <Compile Include="Estoque\Dtos\CreateEstoqueOutput.cs" />
+    <Compile Include="Estoque\Dtos\GetAllEstoqueItem.cs" />
+    <Compile Include="Estoque\Dtos\GetAllEstoqueOutput.cs" />
+    <Compile Include="Estoque\Dtos\GetEstoqueByIdOutput.cs" />
+    <Compile Include="Estoque\Dtos\UpdateEstoqueInput.cs" />
+    <Compile Include="Estoque\Dtos\UpdateEstoqueOutput.cs" />
+    <Compile Include="Estoque\EstoqueAppService.cs" />
+    <Compile Include="Estoque\IEstoqueAppService.cs" />
     <Compile Include="Fabricante\Dtos\CreateFabricanteInput.cs" />
     <Compile Include="Fabricante\Dtos\CreateFabricanteOutput.cs" />
     <Compile Include="Fabricante\Dtos\GetAllFabricantesItem.cs" />

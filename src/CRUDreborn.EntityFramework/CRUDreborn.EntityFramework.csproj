@@ -206,6 +206,7 @@
   <ItemGroup>
     <Compile Include="EntityFramework\CRUDrebornDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\CRUDrebornRepositoryBase.cs" />
+    <Compile Include="EntityFramework\Repositories\EstoqueRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
     <Compile Include="Migrations\201707261347311_Initial_Migration.cs" />
     <Compile Include="Migrations\201707261347311_Initial_Migration.Designer.cs">
@@ -230,6 +231,10 @@
     <Compile Include="Migrations\201803271738246_1-n migration.cs" />
     <Compile Include="Migrations\201803271738246_1-n migration.Designer.cs">
       <DependentUpon>201803271738246_1-n migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803281329390_stock-entity.cs" />
+    <Compile Include="Migrations\201803281329390_stock-entity.Designer.cs">
+      <DependentUpon>201803281329390_stock-entity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -271,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803271738246_1-n migration.resx">
       <DependentUpon>201803271738246_1-n migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803281329390_stock-entity.resx">
+      <DependentUpon>201803281329390_stock-entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

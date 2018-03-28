@@ -199,8 +199,12 @@
     <Compile Include="Configuration\AppSettingNames.cs" />
     <Compile Include="Configuration\AppSettingProvider.cs" />
     <Compile Include="Editions\EditionManager.cs" />
+    <Compile Include="Entities\Estoque.cs" />
+    <Compile Include="Entities\EstoqueManager.cs" />
     <Compile Include="Entities\Fabricante.cs" />
     <Compile Include="Entities\FabricanteManager.cs" />
+    <Compile Include="Entities\IEstoqueManager.cs" />
+    <Compile Include="Entities\IEstoqueRepository.cs" />
     <Compile Include="Entities\IFabricanteManager.cs" />
     <Compile Include="Entities\IFabricanteRepository.cs" />
     <Compile Include="Entities\IProductRepository.cs" />
