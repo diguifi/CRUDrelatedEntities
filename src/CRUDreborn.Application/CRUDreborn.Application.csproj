@@ -247,6 +247,7 @@
     <Compile Include="Users\Dto\CreateUserDto.cs" />
     <Compile Include="Users\Dto\UpdateUserDto.cs" />
     <Compile Include="Users\Dto\UserDto.cs" />
+    <Compile Include="Users\Dto\UserNameByIdOutput.cs" />
     <Compile Include="Users\IUserAppService.cs" />
     <Compile Include="Roles\RoleAppService.cs" />
     <Compile Include="Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />

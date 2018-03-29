@@ -23,6 +23,7 @@
     <text name="CreateNewStock" value="Adicionar estoque" />
     <text name="Quantity" value="Quantidade" />
     <text name="NewSale" value="NOVA VENDA" />
+    <text name="NewSale_" value="Nova venda" />
     <text name="CreateSale" value="Nova venda" />
     <text name="EditManufacturer" value="Editar fabricante" />
     <text name="EditProduct" value="Editar produto" />
@@ -31,9 +32,15 @@
     <text name="Stock" value="Estoque" />
     <text name="System" value="Sistema" />
     <text name="Sales" value="Vendas" />
+    <text name="SaleDay" value="Dia da venda" />
+    <text name="Vendor" value="Vendedor" />
+    <text name="VendorId" value="ID vendedor" />
     <text name="Price" value="Preço" />
     <text name="Total" value="Total" />
+    <text name="Select" value="Escolher" />
     <text name="Details" value="Detalhes" />
+    <text name="Next" value="Próximo" />
+    <text name="Back" value="Voltar" />
     <text name="Ok" value="Ok" />
     <text name="$" value="R$" />
 
@@ -48,6 +55,7 @@
     <text name="Manufacturer" value="Fabricante" />
     <text name="Products" value="Produtos" />
     <text name="Product" value="Produto" />
+    <text name="ProductId" value="ID do produto" />
     <text name="Consumable" value="Consumível" />
     <text name="Surname" value="Sobrenome" />
     <text name="EmailAddress" value="Endereço de e-mail" />

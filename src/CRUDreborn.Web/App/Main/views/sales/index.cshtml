@@ -32,11 +32,11 @@
                     </thead>
                     <tbody>
                         <tr class="success" ng-repeat="venda in vm.vendas">
-                            <td>{{venda.product.name}}</td>
+                            <td>{{venda.assignedProduct.name}}</td>
                             <td>{{venda.quantity}}</td>
-                            <td>{{venda.total}}</td>
+                            <td>@L("$") <b>{{venda.total}}</b></td>
                             <td>
-                                <button type="button" data-toggle="modal" class="btn bg-teal waves-effect" ng-click="vm.openDetailsModal(venda)">
+                                <button type="button" data-toggle="modal" data-target="#largeModal" class="btn bg-teal waves-effect" ng-click="vm.openDetailsModal(venda)">
                                     <i class="material-icons">search</i>
                                 </button>
                             </td>

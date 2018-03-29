@@ -8,6 +8,7 @@ using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.Domain.Repositories;
 using Abp.IdentityFramework;
+using AutoMapper;
 using CRUDreborn.Authorization;
 using CRUDreborn.Authorization.Roles;
 using CRUDreborn.Authorization.Users;
@@ -43,6 +44,13 @@ namespace CRUDreborn.Users
             user.Roles = userRoles.Select(ur => ur).ToArray();
             return user;
         }
+
+        //public UserNameByIdOutput GetUserNameById(long id)
+        //{
+        //    var user = _userManager.GetUserByIdAsync(id);
+        //    var userName = Mapper.Map<UserNameByIdOutput>(user);
+        //    return userName;
+        //}
 
         public override async Task<UserDto> Create(CreateUserDto input)
         {

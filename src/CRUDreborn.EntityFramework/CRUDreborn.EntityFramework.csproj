@@ -245,6 +245,10 @@
     <Compile Include="Migrations\201803282045500_venda-correction.Designer.cs">
       <DependentUpon>201803282045500_venda-correction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803291123486_venda-total.cs" />
+    <Compile Include="Migrations\201803291123486_venda-total.Designer.cs">
+      <DependentUpon>201803291123486_venda-total.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="CRUDrebornDataModule.cs" />
@@ -294,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803282045500_venda-correction.resx">
       <DependentUpon>201803282045500_venda-correction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291123486_venda-total.resx">
+      <DependentUpon>201803291123486_venda-total.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,9 +4,9 @@
     angular
         .module('app')
         .controller('app.views.sales.index',
-        ['$scope', '$timeout', '$uibModal', 'abp.services.app.venda',
+        ['$scope', '$timeout', '$uibModal', 'abp.services.app.venda', 'abp.services.app.produto',
 
-            function ManufacturerController($scope, $timeout, $uibModal, vendaService) {
+            function SalesIndexController($scope, $timeout, $uibModal, vendaService, produtoService) {
                 var vm = this;
                 vm.openVendaCreationModal = openVendaCreationModal;
                 vm.openVendaEditModal = openVendaEditModal;
@@ -15,7 +15,9 @@
                 vm.refresh = refresh;
 
                 vm.vendas = [];
+                vm.produtos = [];
 
+                getProdutos();
                 getVendas();
 
                 function getVendas() {
@@ -24,10 +26,17 @@
                     });
                 }
 
+                function getProdutos() {
+                    produtoService.getAllProdutos({})
+                        .then(function (result) {
+                            vm.produtos = result.data;
+                        });
+                }
+
                 function openVendaCreationModal() {
                     var modalInstance = $uibModal.open({
-                        templateUrl: '/App/Main/views/manufacturers/createModal.cshtml',
-                        controller: 'app.views.manufacturers.createModal as vm',
+                        templateUrl: '/App/Main/views/sales/newSale.cshtml',
+                        controller: 'app.views.sales.newSale as vm',
                         backdrop: 'static'
                     });
 
@@ -63,14 +72,14 @@
                     });
                 };
 
-                function openDetailsModal(fabricante) {
+                function openDetailsModal(venda) {
                     var modalInstance = $uibModal.open({
-                        templateUrl: '/App/Main/views/manufacturers/productsListing.cshtml',
-                        controller: 'app.views.manufacturers.productsListing as vm',
+                        templateUrl: '/App/Main/views/sales/saleDetails.cshtml',
+                        controller: 'app.views.sales.saleDetails as vm',
                         backdrop: 'static',
                         resolve: {
                             id: function () {
-                                return fabricante.id;
+                                return venda.id;
                             }
                         }
                     });
@@ -82,7 +91,7 @@
                     });
 
                     modalInstance.result.then(function () {
-                        getFabricantes();
+                        getVendas();
                     });
                 };
 
