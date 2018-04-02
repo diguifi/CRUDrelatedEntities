@@ -4,9 +4,9 @@
     angular
         .module('app')
         .controller('app.views.sales.newSaleForm',
-        ['$scope', '$timeout', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque', 'abp.services.app.venda','pid', 'eid',
+        ['$scope', '$timeout', '$uibModal', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque', 'abp.services.app.venda','pid', 'eid',
 
-            function NewSalesController($scope, $timeout, $uibModalInstance, produtoService, estoqueService, vendaService, pid, eid) {
+            function NewSalesController($scope, $timeout, $uibModal, $uibModalInstance, produtoService, estoqueService, vendaService, pid, eid) {
                 var vm = this;
                 vm.refresh = refresh;
                 vm.cancel = cancel;
@@ -54,7 +54,6 @@
                 }
 
                 function calculateTotal() {
-                    //if(<=)
                     vm.venda.total = vm.venda.quantity * vm.estoque.price;
                 }
 
@@ -74,7 +73,7 @@
                     vendaService.createVenda(vm.venda)
                         .then(function () {
                             abp.notify.info(App.localize('SavedSuccessfully'));
-                            cancel();
+                            $uibModalInstance.close();
                         });
                 };
 
@@ -96,7 +95,6 @@
                 };
 
                 function back() {
-                    $uibModalInstance.dismiss({});
                     var modalInstance = $uibModal.open({
                         templateUrl: '/App/Main/views/sales/newSale.cshtml',
                         controller: 'app.views.sales.newSale as vm',
@@ -104,6 +102,7 @@
                     });
 
                     modalInstance.rendered.then(function () {
+                        cancel();
                         $.AdminBSB.input.activate();
                     });
 

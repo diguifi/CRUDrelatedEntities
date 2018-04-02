@@ -77,6 +77,37 @@
     <text name="Edit">Edit</text>
     <text name="Delete">Delete</text>
 
+    <text name="CreateNewProduct" value="Create new product" />
+    <text name="CreateNewStock" value="Add stock" />
+    <text name="Quantity" value="Quantity" />
+    <text name="NewSale" value="NEW SALE" />
+    <text name="CreateSale" value="New sale" />
+    <text name="EditSale" value="Edit sale" />
+    <text name="EditManufacturer" value="Edit manufacturer" />
+    <text name="EditProduct" value="Edit product" />
+    <text name="SeeProducts" value="See products" />
+    <text name="AssociatedProducts" value="Associated products" />
+    <text name="StockUpdated" value="Stock updated" />
+    <text name="Stock" value="Stock" />
+    <text name="Sales" value="Sales" />
+    <text name="SaleDay" value="Sale day" />
+    <text name="Vendor" value="Vendor" />
+    <text name="VendorId" value="Vendor ID" />
+    <text name="Price" value="Price" />
+    <text name="Total" value="Total" />
+    <text name="Select" value="Select" />
+    <text name="Details" value="Details" />
+    <text name="Next" value="Next" />
+    <text name="Products" value="Products" />
+    <text name="Product" value="Product" />
+    <text name="ProductId" value="Product ID" />
+    <text name="Manufacturer" value="Manufacturer" />
+    <text name="Manufacturers" value="Manufacturers" />
+    <text name="Consumable" value="Consumable" />
+    <text name="Description" value="Description" />
+    <text name="Ok" value="Ok" />
+    <text name="$" value="$" />
+
 
   </texts>
 </localizationDictionary>

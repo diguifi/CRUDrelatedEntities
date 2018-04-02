@@ -64,6 +64,7 @@
                     });
 
                     modalInstance.rendered.then(function () {
+                        cancel();
                         $.AdminBSB.input.activate();
                     });
 
