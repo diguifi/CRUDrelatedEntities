@@ -80,7 +80,6 @@
 
                 function updateEstoque() {
                     vm.estoque.stock -= vm.venda.quantity;
-                    console.log(vm.estoque);
                     vm.estoque.assignedProduct_Id = vm.produto.id
                     estoqueService.updateEstoque(vm.estoque)
                         .then(function () {

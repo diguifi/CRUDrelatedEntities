@@ -4,7 +4,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title">
-            <span>@L("NewSale_")</span>
+            <span>@L("CreateSale")</span>
         </h4>
     </div>
     <div class="modal-body">
@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="stock in vm.estoque" ng-if="stock.stock>0">
+                <tr ng-repeat="stock in vm.estoque | orderBy:'assignedProduct.name'" ng-if="stock.stock>0">
                     <td>
                         <button type="button" data-toggle="modal" data-target="#largeModal" class="btn btn-success btn-circle waves-effect waves-circle waves-float" ng-click="vm.nextSaleForm(stock.assignedProduct,stock)">
                             <i class="material-icons">attach_money</i>

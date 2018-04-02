@@ -23,8 +23,8 @@
     <text name="CreateNewStock" value="Adicionar estoque" />
     <text name="Quantity" value="Quantidade" />
     <text name="NewSale" value="NOVA VENDA" />
-    <text name="NewSale_" value="Nova venda" />
     <text name="CreateSale" value="Nova venda" />
+    <text name="EditSale" value="Editar venda" />
     <text name="EditManufacturer" value="Editar fabricante" />
     <text name="EditProduct" value="Editar produto" />
     <text name="SeeProducts" value="Ver produtos" />

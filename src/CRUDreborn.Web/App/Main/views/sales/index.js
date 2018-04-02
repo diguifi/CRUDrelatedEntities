@@ -9,7 +9,6 @@
             function SalesIndexController($scope, $timeout, $uibModal, vendaService, produtoService) {
                 var vm = this;
                 vm.openVendaCreationModal = openVendaCreationModal;
-                vm.openVendaEditModal = openVendaEditModal;
                 vm.openDetailsModal = openDetailsModal;
                 vm.delete = Delete;
                 vm.refresh = refresh;
@@ -42,29 +41,6 @@
 
                     modalInstance.rendered.then(function () {
                         $.AdminBSB.input.activate();
-                    });
-
-                    modalInstance.result.then(function () {
-                        getVendas();
-                    });
-                };
-
-                function openVendaEditModal(fabricante) {
-                    var modalInstance = $uibModal.open({
-                        templateUrl: '/App/Main/views/manufacturers/editModal.cshtml',
-                        controller: 'app.views.manufacturers.editModal as vm',
-                        backdrop: 'static',
-                        resolve: {
-                            id: function () {
-                                return fabricante.id;
-                            }
-                        }
-                    });
-
-                    modalInstance.rendered.then(function () {
-                        $timeout(function () {
-                            $.AdminBSB.input.activate();
-                        }, 0);
                     });
 
                     modalInstance.result.then(function () {
