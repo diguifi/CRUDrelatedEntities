@@ -10,7 +10,11 @@
                 var vm = this;
                 vm.refresh = refresh;
                 vm.cancel = cancel;
+                vm.save = save;
                 vm.calculateTotal = calculateTotal;
+                vm.qntUp = qntUp;
+                vm.qntDown = qntDown;
+                vm.back = back;
 
                 vm.venda = {
                     quantity: 0,
@@ -45,22 +49,42 @@
                     estoqueService.getById(eid)
                         .then(function (result) {
                             vm.estoque = result.data;
+                            vm.venda.total = vm.estoque.price;
                         });
                 }
 
                 function calculateTotal() {
                     //if(<=)
-                        vm.venda.total = vm.venda.quantity * vm.estoque.price;
-                    console.log(vm.venda.total);
+                    vm.venda.total = vm.venda.quantity * vm.estoque.price;
+                }
+
+                function qntUp() {
+                    vm.venda.quantity++;
+                }
+
+                function qntDown() {
+                    if (vm.venda.quantity > 0)
+                        vm.venda.quantity--;
                 }
 
                 function save() {
-                    calculateTotal();
                     vm.venda.assignedProduct = vm.produto;
+                    vm.venda.assignedProduct_Id = vm.produto.id;
+                    updateEstoque();
                     vendaService.createVenda(vm.venda)
                         .then(function () {
                             abp.notify.info(App.localize('SavedSuccessfully'));
-                            $uibModalInstance.close();
+                            cancel();
+                        });
+                };
+
+                function updateEstoque() {
+                    vm.estoque.stock -= vm.venda.quantity;
+                    console.log(vm.estoque);
+                    vm.estoque.assignedProduct_Id = vm.produto.id
+                    estoqueService.updateEstoque(vm.estoque)
+                        .then(function () {
+                            abp.notify.info(App.localize('StockUpdated'));
                         });
                 };
 
@@ -70,6 +94,22 @@
 
                 function cancel() {
                     $uibModalInstance.dismiss({});
+                };
+
+                function back() {
+                    $uibModalInstance.dismiss({});
+                    var modalInstance = $uibModal.open({
+                        templateUrl: '/App/Main/views/sales/newSale.cshtml',
+                        controller: 'app.views.sales.newSale as vm',
+                        backdrop: 'static'
+                    });
+
+                    modalInstance.rendered.then(function () {
+                        $.AdminBSB.input.activate();
+                    });
+
+                    modalInstance.result.then(function () {
+                    });
                 };
 
             }

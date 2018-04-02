@@ -45,7 +45,7 @@
                     });
 
                     modalInstance.result.then(function () {
-                        getFabricantes();
+                        getVendas();
                     });
                 };
 
@@ -68,7 +68,7 @@
                     });
 
                     modalInstance.result.then(function () {
-                        getFabricantes();
+                        getVendas();
                     });
                 };
 
@@ -95,22 +95,22 @@
                     });
                 };
 
-                function Delete(fabricante) {
+                function Delete(venda) {
                     abp.message.confirm(
-                        "Delete manufacturer '" + fabricante.name + "'?",
+                        "Delete sale from '" + venda.assignedProduct.name + "'?",
                         function (result) {
                             if (result) {
-                                fabricanteService.deleteFabricante(fabricante.id)
+                                vendaService.deleteVenda(venda.id)
                                     .then(function () {
-                                        abp.notify.info("Deleted user: " + fabricante.name);
-                                        getFabricantes();
+                                        abp.notify.info("Deleted sale: " + venda.assignedProduct.name);
+                                        getVendas();
                                     });
                             }
                         });
                 }
 
                 function refresh() {
-                    getFabricantes();
+                    getVendas();
                 };
 
             }

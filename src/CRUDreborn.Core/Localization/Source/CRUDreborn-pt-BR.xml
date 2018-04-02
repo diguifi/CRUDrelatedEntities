@@ -29,6 +29,7 @@
     <text name="EditProduct" value="Editar produto" />
     <text name="SeeProducts" value="Ver produtos" />
     <text name="AssociatedProducts" value="Produtos associados" />
+    <text name="StockUpdated" value="Estoque atualizado" />
     <text name="Stock" value="Estoque" />
     <text name="System" value="Sistema" />
     <text name="Sales" value="Vendas" />

@@ -20,26 +20,27 @@
             </div>
         </div>
 
-        <p class="range-field">
-            <input type="range" id="test5" min="0" max="100" ng-model="teste"/>
-        </p>
-        {{teste}}
-
         <div class="row clearfix">
             <div class="col-sm-6">
                 <div class="form-group form-float">
-                    <label for="quant" class="form-label">@L("Quantity")</label>
-                    <div class="form-line">
-                        <input id="quant" type="text" name="Quant" ng-model="vm.venda.quantity" ng-change="vm.calculateTotal()" class="validate form-control">
+                    <label for="quant" class="form-label">@L("Quantity"): {{vm.venda.quantity}}</label>
+                    <div class="input-group spinner" data-trigger="spinner">
+                        <br />
+                        <p class="range-field">
+                            <input type="range" id="test5" min="1" max={{vm.estoque.stock}} ng-model="vm.venda.quantity" ng-change="vm.calculateTotal()" />
+                        </p>
+                        <span class="input-group-addon">
+                            <a href="javascript:;" ng-click="vm.qntUp();vm.calculateTotal()" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                            <a href="javascript:;" ng-click="vm.qntDown();vm.calculateTotal()" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                        </span>
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-6">
                 <div class="form-group form-float">
                     <label for="total" class="form-label">@L("Total")</label>
                     <div class="form-line">
-                        <label id="total" class="form-label">{{vm.venda.total}}</label>
+                        <input id="total" type="text" name="total" ng-model="vm.venda.total" class="validate form-control" placeholder="Disabled" disabled="">
                     </div>
                 </div>
             </div>
@@ -48,10 +49,10 @@
 
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default waves-effect" ng-click="vm.cancel()">
+        <button type="button" class="btn btn-default waves-effect" ng-click="vm.back()">
             @L("Back")
         </button>
-        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.calculateTotal()" ng-disabled="newSaleForm.$invalid">
+        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()" ng-disabled="newSaleForm.$invalid">
             @L("Save")
         </button>
     </div>
