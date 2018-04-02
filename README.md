@@ -1,5 +1,8 @@
 # CRUDrelatedEntities
-CRUD on ABP with related entities
+CRUDrelatedEntities is a set of CRUD implementations using the default SPA template from ASP.NET Boilerplate found at:
+https://aspnetboilerplate.com/Templates
+
+It functions as a store's stock basic manager in which you can add manufacturers, products, fill the stock and register sales.
 
 Setup steps:
 - open in Visual Studio
