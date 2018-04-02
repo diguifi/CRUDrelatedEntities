@@ -19,7 +19,7 @@
                 vm.venda = {
                     quantity: 0,
                     assignedProduct_Id: [],
-                    total: 0
+                    total: 0.0
                 };
                 vm.estoque = {
                     stock: 0,

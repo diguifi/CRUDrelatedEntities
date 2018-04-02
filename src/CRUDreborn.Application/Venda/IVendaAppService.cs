@@ -15,5 +15,6 @@ namespace CRUDreborn.Venda
         Task DeleteVenda(long id);
         Task<GetVendaByIdOutput> GetById(long id);
         GetAllVendasOutput GetAllVendas();
+        float GetTotalVendas();
     }
 }

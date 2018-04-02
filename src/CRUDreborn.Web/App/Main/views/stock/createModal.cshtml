@@ -18,7 +18,7 @@
                         <i class="material-icons">content_paste</i>
                     </span>
                     <div class="form-line">
-                        <input id="preco" type="text" ng-model="vm.estoque.stock" class="form-control text-center" value={{vm.estoque.stock}} data-rule="quantity">
+                        <input id="preco" type="number" ng-model="vm.estoque.stock" class="form-control text-center" value={{vm.estoque.stock}} data-rule="quantity">
                     </div>
                     <span class="input-group-addon">
                         <a href="javascript:;" ng-click="vm.stockUp()" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -34,7 +34,7 @@
                         <i class="material-icons">attach_money</i>
                     </span>
                     <div class="form-line">
-                        <input id="preco" type="text" ng-model="vm.estoque.price" class="form-control text-center" value={{vm.estoque.price}} data-rule="quantity">
+                        <input id="preco" type="number" ng-model="vm.estoque.price" class="form-control text-center" value={{vm.estoque.price}} data-rule="quantity">
                     </div>
                     <span class="input-group-addon">
                         <a href="javascript:;" ng-click="vm.priceUp()" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>

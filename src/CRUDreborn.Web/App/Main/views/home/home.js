@@ -1,19 +1,38 @@
 ﻿(function () {
     var controllerId = 'app.views.home';
     angular.module('app').controller(controllerId, [
-        '$scope', 'abp.services.app.produto',
-        function ($scope, produtoService) {
+        '$scope', 'abp.services.app.produto', 'abp.services.app.venda',
+        function ($scope, produtoService, vendaService) {
             var vm = this;
-            vm.produtos = [];
+
             vm.qtdProdutos = 0;
+            vm.qtdVendas = 0;
+            vm.total = 0;
+
             getProdutos();
-            
+            getVendas();
+            getTotal();
+
 
             function getProdutos() {
                 produtoService.getAllProdutos({}).then(function (result) {
-                    vm.produtos = result.data.produtos;
-                    vm.qtdProdutos = vm.produtos.length;
+                    var produtos = result.data.produtos;
+                    vm.qtdProdutos = produtos.length;
                 });
+            }
+
+            function getVendas() {
+                vendaService.getAllVendas({}).then(function (result) {
+                    var vendas = result.data.vendas;
+                    vm.qtdVendas = vendas.length;
+                });
+            }
+
+            function getTotal() {
+                vendaService.getTotalVendas()
+                    .then(function (result) {
+                        vm.total = result.data;
+                    });
             }
 
             var init = function () {

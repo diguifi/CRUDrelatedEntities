@@ -37,6 +37,18 @@ namespace CRUDreborn.Venda
             return new GetAllVendasOutput { Vendas = output };
         }
 
+        public float GetTotalVendas()
+        {
+            var vendas = _vendaManager.GetAll().ToList();
+            float totais = 0.0f;
+            foreach (var sell in vendas)
+            {
+                for(int i=0;i<sell.Quantity;i++)
+                    totais += sell.Total;
+            }
+            return totais;
+        }
+
         public async Task<GetVendaByIdOutput> GetById(long id)
         {
             var venda = await _vendaManager.GetById(id);

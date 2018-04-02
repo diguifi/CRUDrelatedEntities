@@ -77,11 +77,13 @@
     <text name="Edit">Edit</text>
     <text name="Delete">Delete</text>
 
+    <text name="WellcomeMessageHome" value="YOUR DASHBOARD" />
     <text name="CreateNewProduct" value="Create new product" />
     <text name="CreateNewStock" value="Add stock" />
     <text name="Quantity" value="Quantity" />
     <text name="NewSale" value="NEW SALE" />
     <text name="CreateSale" value="New sale" />
+    <text name="CreateNewManufacturer" value="Create new manufacturer" />
     <text name="EditSale" value="Edit sale" />
     <text name="EditManufacturer" value="Edit manufacturer" />
     <text name="EditProduct" value="Edit product" />
