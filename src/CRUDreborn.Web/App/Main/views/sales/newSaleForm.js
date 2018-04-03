@@ -49,12 +49,12 @@
                     estoqueService.getById(eid)
                         .then(function (result) {
                             vm.estoque = result.data;
-                            vm.venda.total = vm.estoque.price;
+                            vm.venda.total = parseFloat(vm.estoque.price).toFixed(2);
                         });
                 }
 
                 function calculateTotal() {
-                    vm.venda.total = vm.venda.quantity * vm.estoque.price;
+                    vm.venda.total = parseFloat(vm.venda.quantity * vm.estoque.price).toFixed(2);
                 }
 
                 function qntUp() {

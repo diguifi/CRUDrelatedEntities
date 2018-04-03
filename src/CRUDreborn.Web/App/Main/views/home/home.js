@@ -127,7 +127,9 @@
                     });
                 }
 
+                //Top most sold Donut Chart
                 function initDonutChart() {
+                    //in case theres less than 4 products sold, olny show the top seller compared to all others
                     if (vm.qtdVendas < 4) {
                         window.Morris.Donut({
                             element: 'donut_chart',
@@ -144,31 +146,59 @@
                             }
                         });
                     }
+                    //if theres 4 or more products sold
                     else {
-                        vm.topMostSold = "TOP 4 MOST SOLD";
-                        window.Morris.Donut({
-                            element: 'donut_chart',
-                            data: [{
-                                label: vm.mostSoldJSON[0].Key,
-                                value: parseFloat((vm.mostSoldJSON[0].Value / vm.totalSold) * 100).toFixed(2)
-                            }, {
-                                label: vm.mostSoldJSON[1].Key,
-                                value: parseFloat((vm.mostSoldJSON[1].Value / vm.totalSold) * 100).toFixed(2)
-                            }, {
-                                label: vm.mostSoldJSON[2].Key,
-                                value: parseFloat((vm.mostSoldJSON[2].Value / vm.totalSold) * 100).toFixed(2)
-                            }, {
-                                label: vm.mostSoldJSON[3].Key,
-                                value: parseFloat((vm.mostSoldJSON[3].Value / vm.totalSold) * 100).toFixed(2)
-                            }, {
-                                label: 'Other',
-                                value: parseFloat(((vm.totalSold - (vm.mostSoldJSON[0].Value + vm.mostSoldJSON[1].Value + vm.mostSoldJSON[2].Value + vm.mostSoldJSON[3].Value)) / vm.totalSold) * 100).toFixed(2)
-                            }],
-                            colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
-                            formatter: function (y) {
-                                return y + '%';
-                            }
-                        });
+                        //case the whole sum of all other products is too high, wont plot "others", just the top sellers
+                        if ((((vm.totalSold - (vm.mostSoldJSON[0].Value + vm.mostSoldJSON[1].Value + vm.mostSoldJSON[2].Value + vm.mostSoldJSON[3].Value)) / vm.totalSold) * 100) > 60) {
+                            vm.topMostSold = "TOP 4 MOST SOLD";
+                            window.Morris.Donut({
+                                element: 'donut_chart',
+                                data: [{
+                                    label: vm.mostSoldJSON[0].Key,
+                                    value: parseFloat((vm.mostSoldJSON[0].Value / vm.totalSold) * 100).toFixed(2)
+                                }, {
+                                    label: vm.mostSoldJSON[1].Key,
+                                    value: parseFloat((vm.mostSoldJSON[1].Value / vm.totalSold) * 100).toFixed(2)
+                                }, {
+                                    label: vm.mostSoldJSON[2].Key,
+                                    value: parseFloat((vm.mostSoldJSON[2].Value / vm.totalSold) * 100).toFixed(2)
+                                }, {
+                                    label: vm.mostSoldJSON[3].Key,
+                                    value: parseFloat((vm.mostSoldJSON[3].Value / vm.totalSold) * 100).toFixed(2)
+                                }],
+                                colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)'],
+                                formatter: function (y) {
+                                    return y + '%';
+                                }
+                            });
+                        }
+                        //plot the top 4 sold products
+                        else {
+                            vm.topMostSold = "TOP 4 MOST SOLD";
+                            window.Morris.Donut({
+                                element: 'donut_chart',
+                                data: [{
+                                    label: vm.mostSoldJSON[0].Key,
+                                    value: parseFloat((vm.mostSoldJSON[0].Value / vm.totalSold) * 100).toFixed(2)
+                                }, {
+                                    label: vm.mostSoldJSON[1].Key,
+                                    value: parseFloat((vm.mostSoldJSON[1].Value / vm.totalSold) * 100).toFixed(2)
+                                }, {
+                                    label: vm.mostSoldJSON[2].Key,
+                                    value: parseFloat((vm.mostSoldJSON[2].Value / vm.totalSold) * 100).toFixed(2)
+                                }, {
+                                    label: vm.mostSoldJSON[3].Key,
+                                    value: parseFloat((vm.mostSoldJSON[3].Value / vm.totalSold) * 100).toFixed(2)
+                                }, {
+                                    label: 'Other',
+                                    value: parseFloat(((vm.totalSold - (vm.mostSoldJSON[0].Value + vm.mostSoldJSON[1].Value + vm.mostSoldJSON[2].Value + vm.mostSoldJSON[3].Value)) / vm.totalSold) * 100).toFixed(2)
+                                }],
+                                colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
+                                formatter: function (y) {
+                                    return y + '%';
+                                }
+                            });
+                        }
                     }
                 }
 

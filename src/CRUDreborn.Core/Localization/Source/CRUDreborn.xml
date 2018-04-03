@@ -90,6 +90,7 @@
     <text name="SeeProducts" value="See products" />
     <text name="AssociatedProducts" value="Associated products" />
     <text name="StockUpdated" value="Stock updated" />
+    <text name="Refresh" value="Refresh" />
     <text name="Stock" value="Stock" />
     <text name="Sales" value="Sales" />
     <text name="SaleDay" value="Sale day" />
