@@ -16,5 +16,6 @@ namespace CRUDreborn.Venda
         Task<GetVendaByIdOutput> GetById(long id);
         GetAllVendasOutput GetAllVendas();
         float GetTotalVendas();
+        string GetMostSold();
     }
 }

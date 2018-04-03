@@ -9,17 +9,18 @@
             vm.qtdVendas = 0;
             vm.total = 0;
             vm.emptyStocks = 0;
+            vm.mostSoldJSON = [];
+            vm.totalSold = 0;
+            vm.topMostSold = "TOP MOST SOLD";
 
             getProdutos();
-            getVendas();
-            getTotal();
-            getEmptyStocks();
-
+            
 
             function getProdutos() {
                 produtoService.getAllProdutos({}).then(function (result) {
                     var produtos = result.data.produtos;
                     vm.qtdProdutos = produtos.length;
+                    getVendas();
                 });
             }
 
@@ -27,6 +28,7 @@
                 vendaService.getAllVendas({}).then(function (result) {
                     var vendas = result.data.vendas;
                     vm.qtdVendas = vendas.length;
+                    getTotal();
                 });
             }
 
@@ -34,18 +36,30 @@
                 vendaService.getTotalVendas()
                     .then(function (result) {
                         vm.total = result.data;
+                        getEmptyStocks();
                     });
             }
 
             function getEmptyStocks() {
                 estoqueService.getAllEmptyEstoque()
                     .then(function (result) {
-                        console.log(result);
                         vm.emptyStocks = result.data;
+                        getMostSold();
                     });
             }
 
-            var init = function () {
+            function getMostSold() {
+                vendaService.getMostSold()
+                    .then(function (result) {
+                        vm.mostSoldJSON = JSON.parse(result.data);
+                        for (var i = 0; i < vm.mostSoldJSON.length; i++) {
+                            vm.totalSold+=vm.mostSoldJSON[i].Value;
+                        }
+                        init();
+                    });
+            }
+
+            function init() {
 
                 function initSummaries() {
                     //Widgets count
@@ -114,29 +128,48 @@
                 }
 
                 function initDonutChart() {
-                    window.Morris.Donut({
-                        element: 'donut_chart',
-                        data: [{
-                            label: 'Chrome',
-                            value: 37
-                        }, {
-                            label: 'Firefox',
-                            value: 30
-                        }, {
-                            label: 'Safari',
-                            value: 18
-                        }, {
-                            label: 'Opera',
-                            value: 12
-                        }, {
-                            label: 'Other',
-                            value: 3
-                        }],
-                        colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
-                        formatter: function (y) {
-                            return y + '%';
-                        }
-                    });
+                    if (vm.qtdVendas < 4) {
+                        window.Morris.Donut({
+                            element: 'donut_chart',
+                            data: [{
+                                label: vm.mostSoldJSON[0].Key,
+                                value: parseFloat((vm.mostSoldJSON[0].Value / vm.totalSold) * 100).toFixed(2)
+                            }, {
+                                label: 'Other',
+                                value: parseFloat(( (vm.totalSold - vm.mostSoldJSON[0].Value) / vm.totalSold) * 100).toFixed(2)
+                            }],
+                            colors: ['rgb(233, 30, 99)', 'rgb(96, 125, 139)'],
+                            formatter: function (y) {
+                                return y + '%';
+                            }
+                        });
+                    }
+                    else {
+                        vm.topMostSold = "TOP 4 MOST SOLD";
+                        window.Morris.Donut({
+                            element: 'donut_chart',
+                            data: [{
+                                label: vm.mostSoldJSON[0].Key,
+                                value: parseFloat((vm.mostSoldJSON[0].Value / vm.totalSold) * 100).toFixed(2)
+                            }, {
+                                label: vm.mostSoldJSON[1].Key,
+                                value: parseFloat((vm.mostSoldJSON[1].Value / vm.totalSold) * 100).toFixed(2)
+                            }, {
+                                label: vm.mostSoldJSON[2].Key,
+                                value: parseFloat((vm.mostSoldJSON[2].Value / vm.totalSold) * 100).toFixed(2)
+                            }, {
+                                label: vm.mostSoldJSON[3].Key,
+                                value: parseFloat((vm.mostSoldJSON[3].Value / vm.totalSold) * 100).toFixed(2)
+                            }, {
+                                label: 'Other',
+                                value: parseFloat(((vm.totalSold - (vm.mostSoldJSON[0].Value + vm.mostSoldJSON[1].Value + vm.mostSoldJSON[2].Value + vm.mostSoldJSON[3].Value)) / vm.totalSold) * 100).toFixed(2)
+                            }],
+                            colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
+                            formatter: function (y) {
+                                return y + '%';
+                            }
+                        });
+                    }
                 }
 
                 var data = [], totalPoints = 110;
@@ -163,8 +196,6 @@
                 initDonutChart();
                 initSparkline();
             };
-
-            init();
         }
     ]);
 })();

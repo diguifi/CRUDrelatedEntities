@@ -43,12 +43,32 @@ namespace CRUDreborn.Venda
             float totais = 0.0f;
             foreach (var sell in vendas)
             {
-                //for(int i=0;i<sell.Quantity;i++)
-                //    totais += sell.Total;
-
                 totais += sell.Total * sell.Quantity;
             }
             return totais;
+        }
+
+        public string GetMostSold()
+        {
+            var vendas = _vendaManager.GetAll().ToList();
+            var dictionary = new Dictionary<string, long>();
+            foreach (var sell in vendas)
+            {
+                if (dictionary.ContainsKey(sell.AssignedProduct.Name.ToString()))
+                {
+                    dictionary[sell.AssignedProduct.Name.ToString()] += sell.Quantity;
+                }
+                else
+                {
+                    dictionary.Add(sell.AssignedProduct.Name.ToString(), sell.Quantity);
+                }
+            }
+
+            var sortedDict = from entry in dictionary orderby entry.Value descending select entry;
+
+            var output = Newtonsoft.Json.JsonConvert.SerializeObject(sortedDict);
+
+            return output;
         }
 
         public async Task<GetVendaByIdOutput> GetById(long id)
