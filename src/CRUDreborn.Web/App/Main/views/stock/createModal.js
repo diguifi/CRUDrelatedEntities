@@ -30,7 +30,7 @@
                 }
 
                 function save() {
-                    vm.estoque.assignedProduct = vm.produto;
+                    vm.estoque.assignedProduct = $scope.data.selector;
                     estoqueService.createEstoque(vm.estoque)
                         .then(function () {
                             abp.notify.info(App.localize('SavedSuccessfully'));

@@ -17,7 +17,6 @@
                 fabricanteService.getAllAssignedProdutos(id)
                     .then(function (result) {
                         vm.produtos = result.data.produtos;
-                        console.log(vm.produtos);
                     });
             }
 

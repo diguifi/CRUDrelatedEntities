@@ -22,6 +22,7 @@
 
                 vm.produtos = [];
                 vm.produto = {};
+                $scope.data = {};
 
                 getProdutos();
                 activate();
@@ -34,6 +35,7 @@
 
                 function setProduto(produto) {
                     vm.produto = produto;
+                    $scope.data.selector = vm.produto;
                 }
 
                 function activate() {
@@ -49,7 +51,8 @@
                 }
 
                 function save() {
-                    vm.estoque.assignedProduct_Id = vm.produto.id
+                    vm.estoque.assignedProduct = $scope.data.selector;
+                    vm.estoque.assignedProduct_Id = $scope.data.selector.id;
                     estoqueService.updateEstoque(vm.estoque)
                         .then(function () {
                             abp.notify.info(App.localize('SavedSuccessfully'));

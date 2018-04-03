@@ -46,11 +46,15 @@
         </div>
 
         <label for="description" class="form-label">@L("Product"): </label>
-        <label for="description" class="form-label">{{vm.produto.name}}</label>
+        <label for="description" class="form-label">{{data.selector.name}}</label>
 
 
-        <div class="form-group">
-            <select class="btn dropdown-toggle btn-default" data-toggle="dropdown" ng-model="vm.produto" ng-options="produto.name for produto in vm.produtos"></select>
+        <div class="row clearfix">
+            <div class="col-sm-12">
+                <div ng-class="{'has-error': estoqueCreateForm.selector.$invalid}">
+                    <select name="selector" class="validate form-control" data-toggle="dropdown" ng-model="data.selector" ng-options="produto.name for produto in vm.produtos" required></select>
+                </div>
+            </div>
         </div>
 
 

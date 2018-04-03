@@ -29,11 +29,15 @@
             </div>
         </div>
         <label for="description" class="form-label">@L("Manufacturer"): </label>
-        <label for="description" class="form-label">{{vm.fabricante.name}}</label>
+        <label for="description" class="form-label">{{data.selector.name}}</label>
 
 
-        <div class="form-group">
-            <select class="btn dropdown-toggle btn-default" data-toggle="dropdown" ng-model="vm.fabricante" ng-options="fabricante.name for fabricante in vm.fabricantes"></select>
+        <div class="row clearfix">
+            <div class="col-sm-12">
+                <div ng-class="{'has-error': produtoCreateForm.selector.$invalid}">
+                    <select name="selector" class="validate form-control" data-toggle="dropdown" ng-model="data.selector" ng-options="fabricante.name for fabricante in vm.fabricantes" required></select>
+                </div>
+            </div>
         </div>
 
 
@@ -53,7 +57,7 @@
         <button type="button" class="btn btn-default waves-effect" ng-click="vm.cancel()">
             @L("Cancel")
         </button>
-        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()" ng-disabled="fabricanteCreateForm.$invalid">
+        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()" ng-disabled="produtoCreateForm.$invalid">
             @L("Save")
         </button>
     </div>

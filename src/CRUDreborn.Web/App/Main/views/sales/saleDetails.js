@@ -26,6 +26,18 @@
                     vendaService.getById(id)
                         .then(function (result) {
                             vm.venda = result.data;
+
+
+                            var time = "";
+                            for (var i=0; i<vm.venda.creationTime.length; i++){
+                                if (vm.venda.creationTime[i] != "T")
+                                    time+=vm.venda.creationTime[i];
+                                else
+                                    break;
+                            }
+                            vm.venda.creationTime = time;
+
+
                             produtoService.getById(vm.venda.assignedProduct_Id)
                                 .then(function (result) {
                                     vm.venda.assignedProduct = result.data;

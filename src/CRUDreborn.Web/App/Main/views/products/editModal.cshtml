@@ -1,4 +1,4 @@
-﻿<form id="frm_create_product" name="produtoCreateForm" novalidate>
+﻿<form id="frm_edit_product" name="produtoEditForm" novalidate>
     <div class="modal-header">
         <button type="button" class="close" ng-click="vm.cancel()" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -29,12 +29,16 @@
             </div>
         </div>
         <label for="description" class="form-label">@L("Manufacturer"): </label>
-        <label for="description" class="form-label">{{vm.fabricante.name}}</label>
+        <label for="description" class="form-label">{{data.selector.name}}</label>
 
 
 
-        <div class="form-group">
-            <select class="btn dropdown-toggle btn-default" data-toggle="dropdown" ng-model="vm.fabricante" ng-options="fabricante.name for fabricante in vm.fabricantes"></select>
+        <div class="row clearfix">
+            <div class="col-sm-12">
+                <div ng-class="{'has-error': produtoEditForm.selector.$invalid}">
+                    <select name="selector" class="validate form-control" data-toggle="dropdown" ng-model="data.selector" ng-options="fabricante.name for fabricante in vm.fabricantes" required></select>
+                </div>
+            </div>
         </div>
 
 
@@ -55,7 +59,7 @@
         <button type="button" class="btn btn-default waves-effect" ng-click="vm.cancel()">
             @L("Cancel")
         </button>
-        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()" ng-disabled="produtoCreateForm.$invalid">
+        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()" ng-disabled="produtoEditForm.$invalid">
             @L("Save")
         </button>
     </div>

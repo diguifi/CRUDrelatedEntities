@@ -43,8 +43,10 @@ namespace CRUDreborn.Venda
             float totais = 0.0f;
             foreach (var sell in vendas)
             {
-                for(int i=0;i<sell.Quantity;i++)
-                    totais += sell.Total;
+                //for(int i=0;i<sell.Quantity;i++)
+                //    totais += sell.Total;
+
+                totais += sell.Total * sell.Quantity;
             }
             return totais;
         }

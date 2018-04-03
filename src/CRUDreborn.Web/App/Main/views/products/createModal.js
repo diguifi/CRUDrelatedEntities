@@ -27,7 +27,7 @@
             }
 
             function save() {
-                vm.produto.assignedManufacturer = vm.fabricante;
+                vm.produto.assignedManufacturer = $scope.data.selector;
                 produtoService.createProduto(vm.produto)
                     .then(function () {
                         abp.notify.info(App.localize('SavedSuccessfully'));

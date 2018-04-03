@@ -1,17 +1,19 @@
 ﻿(function () {
     var controllerId = 'app.views.home';
     angular.module('app').controller(controllerId, [
-        '$scope', 'abp.services.app.produto', 'abp.services.app.venda',
-        function ($scope, produtoService, vendaService) {
+        '$scope', 'abp.services.app.produto', 'abp.services.app.venda', 'abp.services.app.estoque',
+        function ($scope, produtoService, vendaService, estoqueService) {
             var vm = this;
 
             vm.qtdProdutos = 0;
             vm.qtdVendas = 0;
             vm.total = 0;
+            vm.emptyStocks = 0;
 
             getProdutos();
             getVendas();
             getTotal();
+            getEmptyStocks();
 
 
             function getProdutos() {
@@ -32,6 +34,14 @@
                 vendaService.getTotalVendas()
                     .then(function (result) {
                         vm.total = result.data;
+                    });
+            }
+
+            function getEmptyStocks() {
+                estoqueService.getAllEmptyEstoque()
+                    .then(function (result) {
+                        console.log(result);
+                        vm.emptyStocks = result.data;
                     });
             }
 

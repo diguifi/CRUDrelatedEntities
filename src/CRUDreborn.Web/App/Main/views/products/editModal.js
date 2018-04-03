@@ -11,12 +11,12 @@
             vm.save = save;
             vm.cancel = cancel;
             vm.setFabricante = setFabricante;
-            
 
             vm.produto = [];
 
             vm.fabricantes = [];
             vm.fabricante = {};
+            $scope.data = {};
 
             getFabricantes();
             activate();
@@ -29,6 +29,7 @@
 
             function setFabricante(fabricante) {
                 vm.fabricante = fabricante;
+                $scope.data.selector = vm.fabricante;
             }
 
             function activate() {
@@ -44,7 +45,8 @@
             }
 
             function save() {
-                vm.produto.assignedManufacturer_Id = vm.fabricante.id
+                vm.produto.assignedManufacturer = $scope.data.selector;
+                vm.produto.assignedManufacturer_Id = $scope.data.selector.id;
                 produtoService.updateProduto(vm.produto)
                     .then(function () {
                         abp.notify.info(App.localize('SavedSuccessfully'));

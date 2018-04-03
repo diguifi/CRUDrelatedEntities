@@ -15,5 +15,6 @@ namespace CRUDreborn.Estoque
         Task DeleteEstoque(long id);
         Task<GetEstoqueByIdOutput> GetById(long id);
         GetAllEstoqueOutput GetAllEstoque();
+        long GetAllEmptyEstoque();
     }
 }

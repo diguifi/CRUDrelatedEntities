@@ -39,6 +39,18 @@ namespace CRUDreborn.Estoque
             return new GetAllEstoqueOutput { Estoque = output };
         }
 
+        public long GetAllEmptyEstoque()
+        {
+            var estoque = _estoqueManager.GetAll().ToList();
+            long allEmpty = 0;
+            foreach (var est in estoque)
+            {
+                if (est.Stock == 0)
+                    allEmpty++;
+            }
+            return allEmpty;
+        }
+
         public async Task<GetEstoqueByIdOutput> GetById(long id)
         {
             var estoque = await _estoqueManager.GetById(id);
