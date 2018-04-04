@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
+using Abp.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,35 +20,125 @@ namespace CRUDreborn.Entities
 
         public void Create(Produto produto)
         {
-            _produtoRepository.InsertAndAttach(produto);
+            if (produto.Name.Length >= 2 && produto.Description.Length >= 2)
+            {
+                if (produto.Name.Length <= 32)
+                {
+                    if (produto.Description.Length <= 50)
+                    {
+                        if (produto.AssignedManufacturer != null)
+                        {
+                            try
+                            {
+                                _produtoRepository.InsertAndAttach(produto);
+                            }
+                            catch (Exception e)
+                            {
+                                throw new UserFriendlyException("Error", e.Message.ToString());
+                            }
+                        }
+                        else
+                        {
+                            throw new UserFriendlyException("Error", "Please select a manufacturer");
+                        }
+                    }
+                    else
+                        throw new UserFriendlyException("Error", "Please use less than 50 characters for the description");
+                }
+                else
+                    throw new UserFriendlyException("Error", "Please use less than 32 characters for the name");
+            }
+            else
+            {
+                throw new UserFriendlyException("Error", "Please use more than 2 characters for the name and description");
+            }
         }
 
         public async Task<Produto> Update(Produto produto)
         {
-            return await _produtoRepository.UpdateAsync(produto);
+            if (produto.Name.Length >= 2 && produto.Description.Length >= 2)
+            {
+                if (produto.Name.Length <= 32)
+                {
+                    if (produto.Description.Length <= 50)
+                    {
+                        if (produto.AssignedManufacturer != null)
+                        {
+                            try
+                            {
+                                return await _produtoRepository.UpdateAsync(produto);
+                            }
+                            catch (Exception e)
+                            {
+                                throw new UserFriendlyException("Error", e.Message.ToString());
+                            }
+                        }
+                        else
+                        {
+                            throw new UserFriendlyException("Error", "Please select a manufacturer");
+                        }
+                    }
+                    else
+                        throw new UserFriendlyException("Error", "Please use less than 50 characters for the description");
+                }
+                else
+                    throw new UserFriendlyException("Error", "Please use less than 32 characters for the name");
+            }
+            else
+            {
+                throw new UserFriendlyException("Error", "Please use more than 2 characters for the name and description");
+            }
         }
 
         public async Task Delete(long id)
         {
-            await _produtoRepository.DeleteAsync(id);
+            try
+            {
+                await _produtoRepository.DeleteAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public async Task<Produto> GetById(long id)
         {
-            return await _produtoRepository.GetAsync(id);
+            try
+            {
+                return await _produtoRepository.GetAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public IEnumerable<Produto> GetAll()
         {
-            return _produtoRepository.GetAllIncluding(x => x.AssignedManufacturer);
+            try
+            {
+                return _produtoRepository.GetAllIncluding(x => x.AssignedManufacturer);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public IEnumerable<Produto> GetAllFromFabricante(long fab_id)
         {
-            IEnumerable<Produto> produtos = GetAll();
-            IEnumerable<Produto> filteringQuery = produtos.Where(p => p.AssignedManufacturer_Id == fab_id);
+            try
+            {
+                IEnumerable<Produto> produtos = GetAll();
+                IEnumerable<Produto> filteringQuery = produtos.Where(p => p.AssignedManufacturer_Id == fab_id);
 
-            return filteringQuery;
+                return filteringQuery;
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
     }
