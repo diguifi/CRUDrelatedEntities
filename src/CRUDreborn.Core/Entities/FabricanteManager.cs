@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
+using Abp.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,27 +20,96 @@ namespace CRUDreborn.Entities
 
         public async Task<long> Create(Fabricante fabricante)
         {
-            return await _fabricanteRepository.InsertAndGetIdAsync(fabricante);
+            if (fabricante.Name.Length >= 2 && fabricante.Description.Length >= 2)
+            {
+                if (fabricante.Name.Length <= 32)
+                {
+                    if(fabricante.Description.Length <= 50)
+                    {
+                        try
+                        {
+                            return await _fabricanteRepository.InsertAndGetIdAsync(fabricante);
+                        }
+                        catch (Exception e)
+                        {
+                            throw new UserFriendlyException("Error", e.Message.ToString());
+                        }
+                    }
+                    else
+                        throw new UserFriendlyException("Error","Please use less than 50 characters for the description");
+                }
+                else
+                    throw new UserFriendlyException("Error", "Please use less than 32 characters for the name");
+            }
+            else
+            {
+                throw new UserFriendlyException("Error", "Please use more than 2 characters for the name and description");
+            }
         }
 
         public async Task<Fabricante> Update(Fabricante fabricante)
         {
-            return await _fabricanteRepository.UpdateAsync(fabricante);
+            if (fabricante.Name.Length >= 2 && fabricante.Description.Length >= 2)
+            {
+                if (fabricante.Name.Length <= 32)
+                {
+                    if (fabricante.Description.Length <= 50)
+                    {
+                        try
+                        {
+                            return await _fabricanteRepository.UpdateAsync(fabricante);
+                        }
+                        catch (Exception e)
+                        {
+                            throw new UserFriendlyException("Error", e.Message.ToString());
+                        }
+                    }
+                    else
+                        throw new UserFriendlyException("Error", "Please use less than 50 characters for the description");
+                }
+                else
+                    throw new UserFriendlyException("Error", "Please use less than 32 characters for the name");
+            }
+            else
+            {
+                throw new UserFriendlyException("Error", "Please use more than 2 characters for the name and description");
+            }
         }
 
         public async Task Delete(long id)
         {
-            await _fabricanteRepository.DeleteAsync(id);
+            try
+            {
+                await _fabricanteRepository.DeleteAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public async Task<Fabricante> GetById(long id)
         {
-            return await _fabricanteRepository.GetAsync(id);
+            try
+            {
+                return await _fabricanteRepository.GetAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public async Task<List<Fabricante>> GetAll()
         {
-            return await _fabricanteRepository.GetAllListAsync();
+            try
+            {
+                return await _fabricanteRepository.GetAllListAsync();
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
     }
 }

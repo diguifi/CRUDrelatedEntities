@@ -39,11 +39,11 @@
                         for (var i = 0; i < vm.produtos.length; i++) {
                             for (var j = 0; j < vm.estoques.length; j++) {
                                 if (vm.produtos[i].id == vm.estoques[j].assignedProduct_Id) {
-                                    break
+                                    break;
                                 }
                             }
                             if (j == vm.estoques.length) {
-                                vm.produtosRight.push(vm.produtos[i])
+                                vm.produtosRight.push(vm.produtos[i]);
                             }
                         }
                         vm.produtos = vm.produtosRight;
