@@ -23,7 +23,8 @@ namespace CRUDreborn.Estoque
         public void CreateEstoque(CreateEstoqueInput input)
         {
             var estoque = input.MapTo<CRUDreborn.Entities.Estoque>();
-            _estoqueManager.Create(estoque);
+            var estoques = _estoqueManager.GetAll().ToList();
+            _estoqueManager.Create(estoque, estoques);
 
         }
 
@@ -60,7 +61,8 @@ namespace CRUDreborn.Estoque
         public async Task<UpdateEstoqueOutput> UpdateEstoque(UpdateEstoqueInput input)
         {
             var estoque = input.MapTo<CRUDreborn.Entities.Estoque>();
-            var estoqueUpdated = await _estoqueManager.Update(estoque);
+            var estoques = _estoqueManager.GetAll().ToList();
+            var estoqueUpdated = await _estoqueManager.Update(estoque, estoques);
             return estoqueUpdated.MapTo<UpdateEstoqueOutput>();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using CRUDreborn.Estoque.Dtos;
 using CRUDreborn.Produto.Dtos;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,7 @@ namespace CRUDreborn.Produto
         Task DeleteProduto(long id);
         Task<GetProdutoByIdOutput> GetById(long id);
         GetAllProdutosOutput GetAllProdutos();
+        GetAllProdutosOutput GetAllProdutosCheckingEstoque();
+        GetAllEstoqueOutput GetAllAssignedEstoque(long prod_id);
     }
 }

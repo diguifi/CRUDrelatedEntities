@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Services;
+using Abp.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,37 +17,147 @@ namespace CRUDreborn.Entities
             _estoqueRepository = estoqueRepository;
         }
 
-        public void Create(Estoque estoque)
+        public void Create(Estoque estoque, IEnumerable<Estoque> estoques)
         {
-            _estoqueRepository.InsertAndAttach(estoque);
+            bool duplicada = false;
+
+            foreach (var est in estoques)
+            {
+                if (est.AssignedProduct_Id == estoque.AssignedProduct.Id)
+                    duplicada = true;
+            }
+
+            if (!duplicada)
+            {
+                if (estoque.Stock.GetType() == typeof(long))
+                {
+                    if (estoque.Price.GetType() == typeof(float))
+                    {
+                        if (estoque.AssignedProduct != null)
+                        {
+                            try
+                            {
+                                _estoqueRepository.InsertAndAttach(estoque);
+                            }
+                            catch (Exception e)
+                            {
+                                throw new UserFriendlyException("Error", e.Message.ToString());
+                            }
+                        }
+                        else
+                        {
+                            throw new UserFriendlyException("Error", "Please select a product");
+                        }
+                    }
+                    else
+                        throw new UserFriendlyException("Error", "Please insert a float value for the price");
+                }
+                else
+                {
+                    throw new UserFriendlyException("Error", "Please insert an integer number for stock");
+                }
+            }
+            else
+            {
+                throw new UserFriendlyException("Error", "Product is already in stock");
+            }
         }
 
-        public async Task<Estoque> Update(Estoque estoque)
+        public async Task<Estoque> Update(Estoque estoque, IEnumerable<Estoque> estoques)
         {
-            return await _estoqueRepository.UpdateAsync(estoque);
+            bool duplicada = false;
+
+            foreach (var est in estoques)
+            {
+                if (est.AssignedProduct_Id == estoque.AssignedProduct.Id)
+                    duplicada = true;
+            }
+
+            if (!duplicada)
+            {
+                if (estoque.Stock.GetType() == typeof(long))
+                {
+                    if (estoque.Price.GetType() == typeof(float))
+                    {
+                        if (estoque.AssignedProduct != null)
+                        {
+                            try
+                            {
+                                return await _estoqueRepository.UpdateAsync(estoque);
+                            }
+                            catch (Exception e)
+                            {
+                                throw new UserFriendlyException("Error", e.Message.ToString());
+                            }
+                        }
+                        else
+                        {
+                            throw new UserFriendlyException("Error", "Please select a product");
+                        }
+                    }
+                    else
+                        throw new UserFriendlyException("Error", "Please insert a float value for the price");
+                }
+                else
+                {
+                    throw new UserFriendlyException("Error", "Please insert an integer number for stock");
+                }
+            }
+            else
+            {
+                throw new UserFriendlyException("Error", "Product is already in stock");
+            }
         }
 
         public async Task Delete(long id)
         {
-            await _estoqueRepository.DeleteAsync(id);
+            try
+            {
+                await _estoqueRepository.DeleteAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public async Task<Estoque> GetById(long id)
         {
-            return await _estoqueRepository.GetAsync(id);
+            try
+            {
+                return await _estoqueRepository.GetAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public IEnumerable<Estoque> GetAll()
         {
-            return _estoqueRepository.GetAllIncluding(x => x.AssignedProduct);
+            try
+            {
+                return _estoqueRepository.GetAllIncluding(x => x.AssignedProduct);
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
 
         public IEnumerable<Estoque> GetAllFromProduto(long prod_id)
         {
-            IEnumerable<Estoque> estoque = GetAll();
-            IEnumerable<Estoque> filteringQuery = estoque.Where(e => e.AssignedProduct_Id == prod_id);
+            try
+            {
+                IEnumerable<Estoque> estoque = GetAll();
+                IEnumerable<Estoque> filteringQuery = estoque.Where(e => e.AssignedProduct_Id == prod_id);
 
-            return filteringQuery;
+                return filteringQuery;
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException("Error", e.Message.ToString());
+            }
         }
     }
 }

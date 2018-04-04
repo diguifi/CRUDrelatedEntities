@@ -8,8 +8,8 @@ namespace CRUDreborn.Entities
 {
     public interface IEstoqueManager
     {
-        void Create(Estoque estoque);
-        Task<Estoque> Update(Estoque estoque);
+        void Create(Estoque estoque, IEnumerable<Estoque> estoques);
+        Task<Estoque> Update(Estoque estoque, IEnumerable<Estoque> estoques);
         Task Delete(long id);
         Task<Estoque> GetById(long id);
         IEnumerable<Estoque> GetAll();

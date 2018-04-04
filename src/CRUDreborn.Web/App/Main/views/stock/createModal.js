@@ -29,28 +29,20 @@
                     estoqueService.getAllEstoque({})
                         .then(function (result) {
                             vm.estoques = result.data.estoque;
-                            getProdutos();
+                            getProdutos2();
                         });
                 }
 
-                function getProdutos() {
-                    produtoService.getAllProdutos({}).then(function (result) {
-                        vm.produtos = result.data.produtos;
-                        for (var i = 0; i < vm.produtos.length; i++) {
-                            for (var j = 0; j < vm.estoques.length; j++) {
-                                if (vm.produtos[i].id == vm.estoques[j].assignedProduct_Id) {
-                                    break;
-                                }
-                            }
-                            if (j == vm.estoques.length) {
-                                vm.produtosRight.push(vm.produtos[i]);
-                            }
-                        }
-                        vm.produtos = vm.produtosRight;
-                    });
+                function getProdutos2() {
+                    produtoService.getAllProdutosCheckingEstoque({})
+                        .then(function (result) {
+                            console.log(result);
+                            vm.produtos = result.data.produtos;
+                        });
                 }
 
                 function save() {
+                    vm.estoque.assignedProduct_Id = $scope.data.selector.id;
                     vm.estoque.assignedProduct = $scope.data.selector;
                     estoqueService.createEstoque(vm.estoque)
                         .then(function () {
