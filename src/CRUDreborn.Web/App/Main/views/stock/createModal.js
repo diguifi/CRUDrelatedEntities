@@ -13,19 +13,40 @@
                 vm.stockUp = stockUp;
                 vm.stockDown = stockDown;
 
+                vm.estoques = [];
                 vm.estoque = {
                     stock: 0,
                     price: 0.0,
                     assignedProduct: []
                 };
                 vm.produtos = [];
+                vm.produtosRight = [];
                 vm.produto = {};
+                
+                getEstoque();
 
-                getProdutos();
+                function getEstoque() {
+                    estoqueService.getAllEstoque({})
+                        .then(function (result) {
+                            vm.estoques = result.data.estoque;
+                            getProdutos();
+                        });
+                }
 
                 function getProdutos() {
                     produtoService.getAllProdutos({}).then(function (result) {
                         vm.produtos = result.data.produtos;
+                        for (var i = 0; i < vm.produtos.length; i++) {
+                            for (var j = 0; j < vm.estoques.length; j++) {
+                                if (vm.produtos[i].id == vm.estoques[j].assignedProduct_Id) {
+                                    break
+                                }
+                            }
+                            if (j == vm.estoques.length) {
+                                vm.produtosRight.push(vm.produtos[i])
+                            }
+                        }
+                        vm.produtos = vm.produtosRight;
                     });
                 }
 

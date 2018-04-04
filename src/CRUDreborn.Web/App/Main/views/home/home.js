@@ -12,17 +12,9 @@
             vm.mostSoldJSON = [];
             vm.totalSold = 0;
             vm.topMostSold = "TOP MOST SOLD";
-
-            getProdutos();
             
-
-            function getProdutos() {
-                produtoService.getAllProdutos({}).then(function (result) {
-                    var produtos = result.data.produtos;
-                    vm.qtdProdutos = produtos.length;
-                    getVendas();
-                });
-            }
+            getVendas();
+            
 
             function getVendas() {
                 vendaService.getAllVendas({}).then(function (result) {
@@ -31,13 +23,21 @@
                     getTotal();
                 });
             }
-
+            
             function getTotal() {
                 vendaService.getTotalVendas()
                     .then(function (result) {
                         vm.total = result.data;
-                        getEmptyStocks();
+                        getProdutos();
                     });
+            }
+
+            function getProdutos() {
+                produtoService.getAllProdutos({}).then(function (result) {
+                    var produtos = result.data.produtos;
+                    vm.qtdProdutos = produtos.length;
+                    getEmptyStocks();
+                });
             }
 
             function getEmptyStocks() {
