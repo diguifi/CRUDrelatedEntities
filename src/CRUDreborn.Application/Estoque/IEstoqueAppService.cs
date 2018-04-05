@@ -12,6 +12,7 @@ namespace CRUDreborn.Estoque
     {
         void CreateEstoque(CreateEstoqueInput input);
         Task<UpdateEstoqueOutput> UpdateEstoque(UpdateEstoqueInput input);
+        Task<UpdateEstoqueOutput> UpdateEstoqueQuantity(UpdateEstoqueInput input);
         Task DeleteEstoque(long id);
         Task<GetEstoqueByIdOutput> GetById(long id);
         GetAllEstoqueOutput GetAllEstoque();

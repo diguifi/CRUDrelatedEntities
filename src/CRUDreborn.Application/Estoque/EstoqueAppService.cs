@@ -65,5 +65,12 @@ namespace CRUDreborn.Estoque
             var estoqueUpdated = await _estoqueManager.Update(estoque, estoques);
             return estoqueUpdated.MapTo<UpdateEstoqueOutput>();
         }
+
+        public async Task<UpdateEstoqueOutput> UpdateEstoqueQuantity(UpdateEstoqueInput input)
+        {
+            var estoque = input.MapTo<CRUDreborn.Entities.Estoque>();
+            var estoqueUpdated = await _estoqueManager.UpdateQuantity(estoque);
+            return estoqueUpdated.MapTo<UpdateEstoqueOutput>();
+        }
     }
 }

@@ -109,6 +109,25 @@ namespace CRUDreborn.Entities
             }
         }
 
+        public async Task<Estoque> UpdateQuantity(Estoque estoque)
+        {
+                if (estoque.Stock.GetType() == typeof(long))
+                {
+                    try
+                    {
+                        return await _estoqueRepository.UpdateAsync(estoque);
+                    }
+                    catch (Exception e)
+                    {
+                        throw new UserFriendlyException("Error", e.Message.ToString());
+                    }
+                }
+                else
+                {
+                    throw new UserFriendlyException("Error", "Please insert an integer number for stock");
+                }
+        }
+
         public async Task Delete(long id)
         {
             try

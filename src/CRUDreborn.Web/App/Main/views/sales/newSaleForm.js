@@ -69,10 +69,10 @@
                 function save() {
                     vm.venda.assignedProduct = vm.produto;
                     vm.venda.assignedProduct_Id = vm.produto.id;
-                    updateEstoque();
                     vendaService.createVenda(vm.venda)
                         .then(function () {
                             abp.notify.info(App.localize('SavedSuccessfully'));
+                            updateEstoque();
                             $uibModalInstance.close();
                         });
                 };
@@ -80,7 +80,7 @@
                 function updateEstoque() {
                     vm.estoque.stock -= vm.venda.quantity;
                     vm.estoque.assignedProduct_Id = vm.produto.id
-                    estoqueService.updateEstoque(vm.estoque)
+                    estoqueService.updateEstoqueQuantity(vm.estoque)
                         .then(function () {
                             abp.notify.info(App.localize('StockUpdated'));
                         });
