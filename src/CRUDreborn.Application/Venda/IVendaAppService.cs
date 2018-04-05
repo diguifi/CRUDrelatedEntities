@@ -17,5 +17,6 @@ namespace CRUDreborn.Venda
         GetAllVendasOutput GetAllVendas();
         float GetTotalVendas();
         string GetMostSold();
+        string GetDaysSales();
     }
 }

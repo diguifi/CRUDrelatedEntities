@@ -71,6 +71,30 @@ namespace CRUDreborn.Venda
             return output;
         }
 
+        public string GetDaysSales()
+        {
+            var vendas = _vendaManager.GetAll().ToList();
+            var dictionary = new Dictionary<string, long>();
+            foreach (var sell in vendas)
+            {
+                sell.Date = sell.CreationTime.Year.ToString() +"-"+ sell.CreationTime.Month.ToString() +"-"+ sell.CreationTime.Day.ToString();
+                if (dictionary.ContainsKey(sell.Date.ToString()))
+                {
+                    dictionary[sell.Date.ToString()] += sell.Quantity;
+                }
+                else
+                {
+                    dictionary.Add(sell.Date.ToString(), sell.Quantity);
+                }
+            }
+
+            var sortedDict = from entry in dictionary orderby entry.Key descending select entry;
+
+            var output = Newtonsoft.Json.JsonConvert.SerializeObject(sortedDict);
+
+            return output;
+        }
+
         public async Task<GetVendaByIdOutput> GetById(long id)
         {
             var venda = await _vendaManager.GetById(id);

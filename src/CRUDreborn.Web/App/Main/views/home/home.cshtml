@@ -61,13 +61,7 @@
                 <div class="header">
                     <div class="row clearfix">
                         <div class="col-xs-12 col-sm-6">
-                            <h2>CPU USAGE (%)</h2>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 align-right">
-                            <div class="switch panel-switch-btn">
-                                <span class="m-r-10 font-12">REAL TIME</span>
-                                <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
-                            </div>
+                            <h2>SALES CHART</h2>
                         </div>
                     </div>
                     <ul class="header-dropdown m-r--5">
@@ -84,8 +78,10 @@
                     </ul>
                 </div>
                 <div class="body">
-                    <div id="real_time_chart" class="dashboard-flot-chart"></div>
+                    <div id="salesChart" class="graph" style="height: 250px;"></div>
                 </div>
+                <br />
+                <br />
             </div>
         </div>
         <!-- #END# CPU Usage -->
@@ -110,6 +106,7 @@
                 <div class="body">
                     <div id="donut_chart" class="dashboard-donut-chart"></div>
                 </div>
+                <br />
             </div>
         </div>
         <!-- #END# Browser Usage -->
