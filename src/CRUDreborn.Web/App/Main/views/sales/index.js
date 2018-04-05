@@ -3,8 +3,7 @@
 
     angular
         .module('app')
-        .controller('app.views.sales.index',
-        ['$scope', '$timeout', '$uibModal', 'abp.services.app.venda', 'abp.services.app.produto',
+        .controller('app.views.sales.index', ['$scope', '$timeout', '$uibModal', 'abp.services.app.venda', 'abp.services.app.produto',
 
             function SalesIndexController($scope, $timeout, $uibModal, vendaService, produtoService) {
                 var vm = this;

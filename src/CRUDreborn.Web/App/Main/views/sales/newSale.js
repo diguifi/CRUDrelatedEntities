@@ -3,15 +3,14 @@
 
     angular
         .module('app')
-        .controller('app.views.sales.newSale',
-        ['$scope', '$timeout', '$uibModal', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque',
+        .controller('app.views.sales.newSale', ['$scope', '$timeout', '$uibModal', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque',
 
             function NewSalesController($scope, $timeout, $uibModal, $uibModalInstance, produtoService, estoqueService) {
                 var vm = this;
                 vm.refresh = refresh;
                 vm.cancel = cancel;
                 vm.nextSaleForm = nextSaleForm;
-                
+
                 vm.produto = {
                     name: '',
                     description: '',
@@ -48,7 +47,7 @@
                     $uibModalInstance.dismiss({});
                 };
 
-                function nextSaleForm(produto,estoque) {
+                function nextSaleForm(produto, estoque) {
                     var modalInstance = $uibModal.open({
                         templateUrl: '/App/Main/views/sales/newSaleForm.cshtml',
                         controller: 'app.views.sales.newSaleForm as vm',

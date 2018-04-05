@@ -2,27 +2,27 @@
     angular
         .module('app')
         .controller('app.views.manufacturers.createModal', [
-        '$scope', '$uibModalInstance', 'abp.services.app.fabricante',
+            '$scope', '$uibModalInstance', 'abp.services.app.fabricante',
 
-        function ($scope, $uibModalInstance, fabricanteService) {
-            var vm = this;
-            vm.save = save
-            vm.cancel = cancel
+            function ($scope, $uibModalInstance, fabricanteService) {
+                var vm = this;
+                vm.save = save
+                vm.cancel = cancel
 
-            vm.fabricante = {};
+                vm.fabricante = {};
 
-            function save() {
-                fabricanteService.createFabricante(vm.fabricante)
-                    .then(function () {
-                        abp.notify.info(App.localize('SavedSuccessfully'));
-                        $uibModalInstance.close();
-                    });
-            };
+                function save() {
+                    fabricanteService.createFabricante(vm.fabricante)
+                        .then(function () {
+                            abp.notify.info(App.localize('SavedSuccessfully'));
+                            $uibModalInstance.close();
+                        });
+                };
 
-            function cancel() {
-                $uibModalInstance.dismiss({});
-            };
+                function cancel() {
+                    $uibModalInstance.dismiss({});
+                };
 
-        }
-    ]);
+            }
+        ]);
 })();

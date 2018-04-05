@@ -13,7 +13,7 @@
             vm.daysSalesJSON = {};
             vm.totalSold = 0;
             vm.topMostSold = "TOP MOST SOLD";
-            
+
             getVendas();
 
             function getVendas() {
@@ -23,7 +23,7 @@
                     getTotal();
                 });
             }
-            
+
             function getTotal() {
                 vendaService.getTotalVendas()
                     .then(function (result) {
@@ -53,7 +53,7 @@
                     .then(function (result) {
                         vm.mostSoldJSON = JSON.parse(result.data);
                         for (var i = 0; i < vm.mostSoldJSON.length; i++) {
-                            vm.totalSold+=vm.mostSoldJSON[i].Value;
+                            vm.totalSold += vm.mostSoldJSON[i].Value;
                         }
                         getDaysSales();
                     });
@@ -100,7 +100,7 @@
                                 value: parseFloat((vm.mostSoldJSON[0].Value / vm.totalSold) * 100).toFixed(2)
                             }, {
                                 label: 'Other',
-                                value: parseFloat(( (vm.totalSold - vm.mostSoldJSON[0].Value) / vm.totalSold) * 100).toFixed(2)
+                                value: parseFloat(((vm.totalSold - vm.mostSoldJSON[0].Value) / vm.totalSold) * 100).toFixed(2)
                             }],
                             colors: ['rgb(233, 30, 99)', 'rgb(96, 125, 139)'],
                             formatter: function (y) {

@@ -80,11 +80,11 @@ namespace CRUDreborn.Venda
                 sell.Date = sell.CreationTime.Year.ToString() +"-"+ sell.CreationTime.Month.ToString() +"-"+ sell.CreationTime.Day.ToString();
                 if (dictionary.ContainsKey(sell.Date.ToString()))
                 {
-                    dictionary[sell.Date.ToString()] += sell.Quantity;
+                    dictionary[sell.Date.ToString()] += 1;
                 }
                 else
                 {
-                    dictionary.Add(sell.Date.ToString(), sell.Quantity);
+                    dictionary.Add(sell.Date.ToString(), 1);
                 }
             }
 

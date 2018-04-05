@@ -3,8 +3,7 @@
 
     angular
         .module('app')
-        .controller('app.views.sales.newSaleForm',
-        ['$scope', '$timeout', '$uibModal', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque', 'abp.services.app.venda','pid', 'eid',
+        .controller('app.views.sales.newSaleForm', ['$scope', '$timeout', '$uibModal', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque', 'abp.services.app.venda', 'pid', 'eid',
 
             function NewSalesController($scope, $timeout, $uibModal, $uibModalInstance, produtoService, estoqueService, vendaService, pid, eid) {
                 var vm = this;
@@ -34,7 +33,7 @@
                     assignedManufacturer: [],
                     consumable: false
                 };
-                
+
                 getProduto();
                 getEstoque();
 
@@ -106,8 +105,7 @@
                         $.AdminBSB.input.activate();
                     });
 
-                    modalInstance.result.then(function () {
-                    });
+                    modalInstance.result.then(function () { });
                 };
 
             }

@@ -3,27 +3,26 @@
 
     angular
         .module('app')
-        .controller('app.views.manufacturers.productsListing',
-        ['$scope', '$uibModalInstance', 'abp.services.app.fabricante', 'id',
+        .controller('app.views.manufacturers.productsListing', ['$scope', '$uibModalInstance', 'abp.services.app.fabricante', 'id',
 
-        function ($scope, $uibModalInstance, fabricanteService, id) {
-            var vm = this;
+            function ($scope, $uibModalInstance, fabricanteService, id) {
+                var vm = this;
 
-            vm.produtos = {};
+                vm.produtos = {};
 
-            activate();
+                activate();
 
-            function activate() {
-                fabricanteService.getAllAssignedProdutos(id)
-                    .then(function (result) {
-                        vm.produtos = result.data.produtos;
-                    });
+                function activate() {
+                    fabricanteService.getAllAssignedProdutos(id)
+                        .then(function (result) {
+                            vm.produtos = result.data.produtos;
+                        });
+                }
+
+                vm.cancel = function () {
+                    $uibModalInstance.dismiss({});
+                };
+
             }
-
-            vm.cancel = function () {
-                $uibModalInstance.dismiss({});
-            };
-
-        }
-    ]);
+        ]);
 })();

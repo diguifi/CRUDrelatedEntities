@@ -1,8 +1,7 @@
 ﻿(function () {
     angular
         .module('app')
-        .controller('app.views.stock.editModal',
-        ['$scope', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque', 'id',
+        .controller('app.views.stock.editModal', ['$scope', '$uibModalInstance', 'abp.services.app.produto', 'abp.services.app.estoque', 'id',
 
             function ($scope, $uibModalInstance, produtoService, estoqueService, id) {
                 var vm = this;
@@ -67,6 +66,7 @@
                 function priceUp() {
                     vm.estoque.price++;
                 }
+
                 function priceDown() {
                     if (vm.estoque.price > 0)
                         vm.estoque.price--;
@@ -75,6 +75,7 @@
                 function stockUp() {
                     vm.estoque.stock++;
                 }
+
                 function stockDown() {
                     if (vm.estoque.stock > 0)
                         vm.estoque.stock--;

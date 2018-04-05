@@ -3,8 +3,7 @@
 
     angular
         .module('app')
-        .controller('app.views.stock.index',
-        ['$scope', '$timeout', '$uibModal', 'abp.services.app.estoque', 'abp.services.app.produto',
+        .controller('app.views.stock.index', ['$scope', '$timeout', '$uibModal', 'abp.services.app.estoque', 'abp.services.app.produto',
 
             function ProductsController($scope, $timeout, $uibModal, estoqueService, produtoService) {
                 var vm = this;
@@ -15,7 +14,7 @@
 
                 vm.produtos = [];
                 vm.estoque = [];
-               
+
                 getProdutos();
                 getEstoque();
 

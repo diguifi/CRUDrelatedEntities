@@ -3,8 +3,7 @@
 
     angular
         .module('app')
-        .controller('app.views.sales.saleDetails',
-        ['$scope', '$uibModalInstance', 'abp.services.app.venda', 'abp.services.app.produto', 'id',
+        .controller('app.views.sales.saleDetails', ['$scope', '$uibModalInstance', 'abp.services.app.venda', 'abp.services.app.produto', 'id',
 
             function SaleController($scope, $uibModalInstance, vendaService, produtoService, id) {
                 var vm = this;
