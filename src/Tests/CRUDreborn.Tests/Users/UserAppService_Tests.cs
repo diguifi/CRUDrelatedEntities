@@ -5,6 +5,7 @@ using CRUDreborn.Users;
 using CRUDreborn.Users.Dto;
 using Shouldly;
 using Xunit;
+using AutoMapper;
 
 namespace CRUDreborn.Tests.Users
 {
