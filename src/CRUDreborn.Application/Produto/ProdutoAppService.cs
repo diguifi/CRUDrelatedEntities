@@ -23,11 +23,14 @@ namespace CRUDreborn.Produto
             _estoqueManager = estoqueManager;
         }
 
-        public void CreateProduto(CreateProdutoInput input)
+        public CreateProdutoOutput CreateProduto(CreateProdutoInput input)
         {
             var produto = input.MapTo<CRUDreborn.Entities.Produto>();
-            _produtoManager.Create(produto);
-            
+            var createdProdutoId = _produtoManager.Create(produto);
+            return new CreateProdutoOutput
+            {
+                Id = createdProdutoId
+            };
         }
 
         public async Task DeleteProduto(long id)

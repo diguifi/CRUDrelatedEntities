@@ -18,7 +18,6 @@ namespace CRUDreborn.EntityFramework.Repositories
         {
             Context.Fabricantes.Attach(entity.AssignedManufacturer);
             Context.Produtos.Add(entity);
-            Context.SaveChanges();
         }
 
     }

@@ -11,7 +11,7 @@ namespace CRUDreborn.Produto
 {
     public interface IProdutoAppService : IApplicationService
     {
-        void CreateProduto(CreateProdutoInput input);
+        CreateProdutoOutput CreateProduto(CreateProdutoInput input);
         Task<UpdateProdutoOutput> UpdateProduto(UpdateProdutoInput input);
         Task DeleteProduto(long id);
         Task<GetProdutoByIdOutput> GetById(long id);

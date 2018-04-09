@@ -18,7 +18,7 @@ namespace CRUDreborn.Entities
             _produtoRepository = produtoRepository;
         }
 
-        public void Create(Produto produto)
+        public long Create(Produto produto)
         {
             if (produto.Name.Length >= 2 && produto.Description.Length >= 2)
             {
@@ -31,6 +31,7 @@ namespace CRUDreborn.Entities
                             try
                             {
                                 _produtoRepository.InsertAndAttach(produto);
+                                return _produtoRepository.InsertAndGetId(produto);
                             }
                             catch (Exception e)
                             {

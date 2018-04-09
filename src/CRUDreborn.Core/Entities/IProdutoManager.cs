@@ -8,7 +8,7 @@ namespace CRUDreborn.Entities
 {
     public interface IProdutoManager
     {
-        void Create(Produto produto);
+        long Create(Produto produto);
         Task<Produto> Update(Produto produto);
         Task Delete(long id);
         Task<Produto> GetById(long id);

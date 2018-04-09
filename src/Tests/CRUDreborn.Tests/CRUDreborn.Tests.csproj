@@ -248,6 +248,7 @@
     <Compile Include="CRUDrebornTestModule.cs" />
     <Compile Include="Manufacturers\FabricanteAppService_Tests.cs" />
     <Compile Include="MultiTenantFactAttribute.cs" />
+    <Compile Include="Products\ProdutoAppService_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessions\SessionAppService_Tests.cs" />
     <Compile Include="CRUDrebornTestBase.cs" />
