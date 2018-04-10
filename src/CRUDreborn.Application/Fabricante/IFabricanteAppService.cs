@@ -1,10 +1,6 @@
 ﻿using Abp.Application.Services;
 using CRUDreborn.Fabricante.Dtos;
 using CRUDreborn.Produto.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CRUDreborn.Fabricante

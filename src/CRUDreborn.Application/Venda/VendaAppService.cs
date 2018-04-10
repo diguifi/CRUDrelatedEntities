@@ -2,10 +2,8 @@
 using AutoMapper;
 using CRUDreborn.Entities;
 using CRUDreborn.Venda.Dtos;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CRUDreborn.Venda
@@ -19,6 +17,11 @@ namespace CRUDreborn.Venda
             _vendaManager = vendaManager;
         }
 
+        /// <summary>
+        /// Creates a 'Venda' (Sale)
+        /// </summary>
+        /// <param name="input">Venda's input DTO</param>
+        /// <returns>Creation Output DTO containing the Id</returns>
         public long CreateVenda(CreateVendaInput input)
         {
             var venda = input.MapTo<CRUDreborn.Entities.Venda>();
@@ -26,11 +29,20 @@ namespace CRUDreborn.Venda
             return createdVendaId;
         }
 
+        /// <summary>
+        /// Deletes a 'Venda' (Sale)
+        /// </summary>
+        /// <param name="id">Venda's Id</param>
+        /// <returns></returns>
         public async Task DeleteVenda(long id)
         {
             await _vendaManager.Delete(id);
         }
 
+        /// <summary>
+        /// Gets all stored 'Venda' (Sale)
+        /// </summary>
+        /// <returns>List DTO containing all stored 'Venda'</returns>
         public GetAllVendasOutput GetAllVendas()
         {
             var venda = _vendaManager.GetAll().ToList();
@@ -38,6 +50,10 @@ namespace CRUDreborn.Venda
             return new GetAllVendasOutput { Vendas = output };
         }
 
+        /// <summary>
+        /// Gets the sum of the total of all stored 'Vendas' (Sales)
+        /// </summary>
+        /// <returns>Sum of all sales' total</returns>
         public float GetTotalVendas()
         {
             var vendas = _vendaManager.GetAll().ToList();
@@ -49,6 +65,10 @@ namespace CRUDreborn.Venda
             return totais;
         }
 
+        /// <summary>
+        /// Gets the most sold 'Produtos' (Products)
+        /// </summary>
+        /// <returns>JSON string</returns>
         public string GetMostSold()
         {
             var vendas = _vendaManager.GetAll().ToList();
@@ -72,6 +92,10 @@ namespace CRUDreborn.Venda
             return output;
         }
 
+        /// <summary>
+        /// Gets 'Vendas' (Sales) per day
+        /// </summary>
+        /// <returns>JSON string</returns>
         public string GetDaysSales()
         {
             var vendas = _vendaManager.GetAll().ToList();
@@ -96,12 +120,22 @@ namespace CRUDreborn.Venda
             return output;
         }
 
+        /// <summary>
+        /// Gets a stored 'Venda' (Sale) by Id
+        /// </summary>
+        /// <param name="id">Venda's Id</param>
+        /// <returns>Venda's DTO</returns>
         public async Task<GetVendaByIdOutput> GetById(long id)
         {
             var venda = await _vendaManager.GetById(id);
             return venda.MapTo<Dtos.GetVendaByIdOutput>();
         }
 
+        /// <summary>
+        /// Updates a 'Venda' (Sale)
+        /// </summary>
+        /// <param name="input">Venda's input DTO</param>
+        /// <returns>Venda's DTO</returns>
         public async Task<UpdateVendaOutput> UpdateVenda(UpdateVendaInput input)
         {
             var venda = input.MapTo<CRUDreborn.Entities.Venda>();

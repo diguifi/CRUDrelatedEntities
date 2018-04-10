@@ -3,10 +3,8 @@ using AutoMapper;
 using CRUDreborn.Entities;
 using CRUDreborn.Fabricante.Dtos;
 using CRUDreborn.Produto.Dtos;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CRUDreborn.Fabricante
@@ -22,6 +20,11 @@ namespace CRUDreborn.Fabricante
             _produtoManager = produtoManager;
         }
 
+        /// <summary>
+        /// Creates a 'Fabricante' (Manufacturer)
+        /// </summary>
+        /// <param name="input">Fabricante's input DTO</param>
+        /// <returns>Creation Output DTO containing the Id</returns>
         public async Task<CreateFabricanteOutput> CreateFabricante(CreateFabricanteInput input)
         {
             var fabricante = input.MapTo<CRUDreborn.Entities.Fabricante>();
@@ -32,11 +35,20 @@ namespace CRUDreborn.Fabricante
             };
         }
 
+        /// <summary>
+        /// Deletes a 'Fabricante' (Manufacturer)
+        /// </summary>
+        /// <param name="id">Fabricante's Id</param>
+        /// <returns></returns>
         public async Task DeleteFabricante(long id)
         {
             await _fabricanteManager.Delete(id);
         }
 
+        /// <summary>
+        /// Gets all stored 'Fabricantes' (Manufacturers)
+        /// </summary>
+        /// <returns>List DTO containing all stored 'Fabricante'</returns>
         public async Task<GetAllFabricantesOutput> GetAllFabricantes()
         {
             var fabricantes = await _fabricanteManager.GetAll();
@@ -46,12 +58,22 @@ namespace CRUDreborn.Fabricante
             };
         }
 
+        /// <summary>
+        /// Gets a stored 'Fabricante' (Manufacturer) by Id
+        /// </summary>
+        /// <param name="id">Fabricante's Id</param>
+        /// <returns>Fabricante's DTO</returns>
         public async Task<Dtos.GetFabricanteByIdOutput> GetById(long id)
         {
             var fabricante = await _fabricanteManager.GetById(id);
             return fabricante.MapTo<Dtos.GetFabricanteByIdOutput>();
         }
 
+        /// <summary>
+        /// Updates 'Fabricante' (Manufacturer)
+        /// </summary>
+        /// <param name="input">Fabricante's input DTO</param>
+        /// <returns>Fabricante's DTO</returns>
         public async Task<UpdateFabricanteOutput> UpdateFabricante(UpdateFabricanteInput input)
         {
             var fabricante = input.MapTo<CRUDreborn.Entities.Fabricante>();
@@ -59,6 +81,11 @@ namespace CRUDreborn.Fabricante
             return fabricanteUpdated.MapTo<UpdateFabricanteOutput>();
         }
 
+        /// <summary>
+        /// Get all 'Produtos' assigned to the specified 'Fabricante'
+        /// </summary>
+        /// <param name="fab_id">Fabricante's Id</param>
+        /// <returns>List DTO containing all assigned 'Produtos'</returns>
         public GetAllProdutosOutput GetAllAssignedProdutos(long fab_id)
         {
             var produtos = _produtoManager.GetAllFromFabricante(fab_id).ToList();

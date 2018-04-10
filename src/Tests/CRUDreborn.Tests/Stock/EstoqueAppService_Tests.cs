@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Shouldly;
+﻿using Shouldly;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using CRUDreborn.Estoque;

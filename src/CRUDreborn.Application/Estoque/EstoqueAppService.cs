@@ -3,10 +3,8 @@ using Abp.AutoMapper;
 using AutoMapper;
 using CRUDreborn.Entities;
 using CRUDreborn.Estoque.Dtos;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CRUDreborn.Estoque
@@ -20,6 +18,11 @@ namespace CRUDreborn.Estoque
             _estoqueManager = estoqueManager;
         }
 
+        /// <summary>
+        /// Creates a 'Estoque' (Stock)
+        /// </summary>
+        /// <param name="input">Estoque's input DTO</param>
+        /// <returns>Creation Output DTO containing the Id</returns>
         public CreateEstoqueOutput CreateEstoque(CreateEstoqueInput input)
         {
             var estoque = input.MapTo<CRUDreborn.Entities.Estoque>();
@@ -32,11 +35,20 @@ namespace CRUDreborn.Estoque
 
         }
 
+        /// <summary>
+        /// Deletes a 'Estoque' (Stock)
+        /// </summary>
+        /// <param name="id">Estoque's Id</param>
+        /// <returns></returns>
         public async Task DeleteEstoque(long id)
         {
             await _estoqueManager.Delete(id);
         }
 
+        /// <summary>
+        /// Gets all stored 'Estoque' (Stock)
+        /// </summary>
+        /// <returns>List DTO containing all stored 'Estoque'</returns>
         public GetAllEstoqueOutput GetAllEstoque()
         {
             var estoque = _estoqueManager.GetAll().ToList();
@@ -44,6 +56,10 @@ namespace CRUDreborn.Estoque
             return new GetAllEstoqueOutput { Estoque = output };
         }
 
+        /// <summary>
+        /// Gets number of all empty 'Estoques' (Stocks)
+        /// </summary>
+        /// <returns>Number of all 'Estoques' (Stocks) which Quantity attribute is equal to 0</returns>
         public long GetAllEmptyEstoque()
         {
             var estoque = _estoqueManager.GetAll().ToList();
@@ -56,12 +72,22 @@ namespace CRUDreborn.Estoque
             return allEmpty;
         }
 
+        /// <summary>
+        /// Gets a stored 'Estoque' (Stock) by Id
+        /// </summary>
+        /// <param name="id">Estoque's Id</param>
+        /// <returns>Estoque's DTO</returns>
         public async Task<GetEstoqueByIdOutput> GetById(long id)
         {
             var estoque = await _estoqueManager.GetById(id);
             return estoque.MapTo<GetEstoqueByIdOutput>();
         }
 
+        /// <summary>
+        /// Updates a 'Estoque' (Stock)
+        /// </summary>
+        /// <param name="input">Estoque's input DTO</param>
+        /// <returns>Estoque's DTO</returns>
         public async Task<UpdateEstoqueOutput> UpdateEstoque(UpdateEstoqueInput input)
         {
             var estoque = input.MapTo<CRUDreborn.Entities.Estoque>();
@@ -69,6 +95,11 @@ namespace CRUDreborn.Estoque
             return estoqueUpdated.MapTo<UpdateEstoqueOutput>();
         }
 
+        /// <summary>
+        /// Updates a 'Estoque' (Stock)
+        /// </summary>
+        /// <param name="input">Estoque's input DTO</param>
+        /// <returns>Estoque's DTO</returns>
         public async Task<UpdateEstoqueOutput> UpdateEstoqueQuantity(UpdateEstoqueInput input)
         {
             var estoque = input.MapTo<CRUDreborn.Entities.Estoque>();

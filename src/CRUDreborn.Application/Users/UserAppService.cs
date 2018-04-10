@@ -8,7 +8,6 @@ using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.Domain.Repositories;
 using Abp.IdentityFramework;
-using AutoMapper;
 using CRUDreborn.Authorization;
 using CRUDreborn.Authorization.Roles;
 using CRUDreborn.Authorization.Users;
