@@ -5,8 +5,10 @@ https://aspnetboilerplate.com/Templates
 It functions as a store's stock basic manager in which you can add manufacturers, products, fill the stock and register sales.
 
 Setup steps:
-- open in Visual Studio
-- right click CRUDreborn.Web and select "Set as StartUp Project."
-- open the Tools menu, select the "NuGet package manager" submenu and click "package manager console"
-- run the command "update-database"
-- run the project (default login: admin; default password: 123qwe)
+- Open in Visual Studio
+- Right click CRUDreborn.Web and select "Set as StartUp Project."
+- Open the Tools menu, select the "NuGet package manager" submenu and click "package manager console"
+- Run the command "update-database"
+- Run the project (default login: admin; default password: 123qwe)
+
+Steps on how to use are at the "About" page.
