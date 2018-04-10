@@ -22,14 +22,15 @@
                 vm.produtos = [];
                 vm.produto = {};
                 $scope.data = {};
-
-                getProdutos();
+                
                 activate();
 
                 function getProdutos() {
-                    produtoService.getAllProdutos({}).then(function (result) {
-                        vm.produtos = result.data.produtos;
-                    });
+                    produtoService.getAllProdutosCheckingEstoque({})
+                        .then(function (result) {
+                            vm.produtos = result.data.produtos;
+                            vm.produtos.push(vm.estoque.assignedProduct);
+                        });
                 }
 
                 function setProduto(produto) {
@@ -45,6 +46,7 @@
                                 .then(function (result) {
                                     vm.estoque.assignedProduct = result.data;
                                     setProduto(vm.estoque.assignedProduct);
+                                    getProdutos();
                                 });
                         });
                 }

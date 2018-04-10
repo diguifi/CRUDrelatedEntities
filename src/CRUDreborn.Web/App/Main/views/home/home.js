@@ -63,7 +63,6 @@
                 vendaService.getDaysSales()
                     .then(function (result) {
                         vm.daysSalesJSON = JSON.parse(result.data);
-                        console.log(vm.daysSalesJSON);
                         init();
                     });
             }

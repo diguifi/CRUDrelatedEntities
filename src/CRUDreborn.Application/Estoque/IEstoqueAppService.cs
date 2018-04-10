@@ -10,7 +10,7 @@ namespace CRUDreborn.Estoque
 {
     public interface IEstoqueAppService : IApplicationService
     {
-        void CreateEstoque(CreateEstoqueInput input);
+        CreateEstoqueOutput CreateEstoque(CreateEstoqueInput input);
         Task<UpdateEstoqueOutput> UpdateEstoque(UpdateEstoqueInput input);
         Task<UpdateEstoqueOutput> UpdateEstoqueQuantity(UpdateEstoqueInput input);
         Task DeleteEstoque(long id);

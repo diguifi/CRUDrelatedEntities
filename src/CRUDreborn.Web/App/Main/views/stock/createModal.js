@@ -35,7 +35,6 @@
                 function getProdutos2() {
                     produtoService.getAllProdutosCheckingEstoque({})
                         .then(function (result) {
-                            console.log(result);
                             vm.produtos = result.data.produtos;
                         });
                 }

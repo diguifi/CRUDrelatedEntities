@@ -17,7 +17,7 @@ namespace CRUDreborn.Entities
             _estoqueRepository = estoqueRepository;
         }
 
-        public void Create(Estoque estoque, IEnumerable<Estoque> estoques)
+        public long Create(Estoque estoque, IEnumerable<Estoque> estoques)
         {
             bool duplicada = false;
 
@@ -38,75 +38,56 @@ namespace CRUDreborn.Entities
                             try
                             {
                                 _estoqueRepository.InsertAndAttach(estoque);
+                                return _estoqueRepository.InsertAndGetId(estoque);
                             }
                             catch (Exception e)
                             {
-                                throw new UserFriendlyException("Error", e.Message.ToString());
+                                throw new UserFriendlyException("Error 5", e.Message.ToString());
                             }
                         }
                         else
                         {
-                            throw new UserFriendlyException("Error", "Please select a product");
+                            throw new UserFriendlyException("Error 4", "Please select a product");
                         }
                     }
                     else
-                        throw new UserFriendlyException("Error", "Please insert a float value for the price");
+                        throw new UserFriendlyException("Error 3", "Please insert a float value for the price");
                 }
                 else
                 {
-                    throw new UserFriendlyException("Error", "Please insert an integer number for stock");
+                    throw new UserFriendlyException("Error 2", "Please insert an integer number for stock");
                 }
             }
             else
             {
-                throw new UserFriendlyException("Error", "Product is already in stock");
+                throw new UserFriendlyException("Error 1", "Product is already in stock");
             }
         }
 
-        public async Task<Estoque> Update(Estoque estoque, IEnumerable<Estoque> estoques)
+        public async Task<Estoque> Update(Estoque estoque)
         {
-            bool duplicada = false;
-
-            foreach (var est in estoques)
-            {
-                if (est.AssignedProduct_Id == estoque.AssignedProduct.Id)
-                    duplicada = true;
-            }
-
-            if (!duplicada)
-            {
+            
                 if (estoque.Stock.GetType() == typeof(long))
                 {
                     if (estoque.Price.GetType() == typeof(float))
                     {
-                        if (estoque.AssignedProduct != null)
-                        {
                             try
                             {
                                 return await _estoqueRepository.UpdateAsync(estoque);
                             }
                             catch (Exception e)
                             {
-                                throw new UserFriendlyException("Error", e.Message.ToString());
+                                throw new UserFriendlyException("Error 5", e.Message.ToString());
                             }
-                        }
-                        else
-                        {
-                            throw new UserFriendlyException("Error", "Please select a product");
-                        }
                     }
                     else
-                        throw new UserFriendlyException("Error", "Please insert a float value for the price");
+                        throw new UserFriendlyException("Error 3", "Please insert a float value for the price");
                 }
                 else
                 {
-                    throw new UserFriendlyException("Error", "Please insert an integer number for stock");
+                    throw new UserFriendlyException("Error 2", "Please insert an integer number for stock");
                 }
-            }
-            else
-            {
-                throw new UserFriendlyException("Error", "Product is already in stock");
-            }
+            
         }
 
         public async Task<Estoque> UpdateQuantity(Estoque estoque)
