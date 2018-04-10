@@ -19,10 +19,11 @@ namespace CRUDreborn.Venda
             _vendaManager = vendaManager;
         }
 
-        public void CreateVenda(CreateVendaInput input)
+        public long CreateVenda(CreateVendaInput input)
         {
             var venda = input.MapTo<CRUDreborn.Entities.Venda>();
-            _vendaManager.Create(venda);
+            var createdVendaId = _vendaManager.Create(venda);
+            return createdVendaId;
         }
 
         public async Task DeleteVenda(long id)

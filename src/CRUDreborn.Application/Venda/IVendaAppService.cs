@@ -10,7 +10,7 @@ namespace CRUDreborn.Venda
 {
     public interface IVendaAppService : IApplicationService
     {
-        void CreateVenda(CreateVendaInput input);
+        long CreateVenda(CreateVendaInput input);
         Task<UpdateVendaOutput> UpdateVenda(UpdateVendaInput input);
         Task DeleteVenda(long id);
         Task<GetVendaByIdOutput> GetById(long id);

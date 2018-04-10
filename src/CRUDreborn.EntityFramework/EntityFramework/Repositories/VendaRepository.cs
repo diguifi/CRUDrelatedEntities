@@ -18,7 +18,6 @@ namespace CRUDreborn.EntityFramework.Repositories
         {
             Context.Produtos.Attach(entity.AssignedProduct);
             Context.Venda.Add(entity);
-            Context.SaveChanges();
         }
 
     }

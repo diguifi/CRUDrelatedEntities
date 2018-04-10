@@ -18,7 +18,7 @@ namespace CRUDreborn.Entities
             _vendaRepository = vendaRepository;
         }
 
-        public void Create(Venda venda)
+        public long Create(Venda venda)
         {
             if (venda.AssignedProduct != null)
             {
@@ -29,6 +29,7 @@ namespace CRUDreborn.Entities
                         try
                         {
                             _vendaRepository.InsertAndAttach(venda);
+                            return _vendaRepository.InsertAndGetId(venda);
                         }
                         catch (Exception e)
                         {

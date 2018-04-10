@@ -8,7 +8,7 @@ namespace CRUDreborn.Entities
 {
     public interface IVendaManager
     {
-        void Create(Venda venda);
+        long Create(Venda venda);
         Task<Venda> Update(Venda venda);
         Task Delete(long id);
         Task<Venda> GetById(long id);
